@@ -4,8 +4,9 @@
 import pytz
 from datetime import datetime
 from time import sleep
+from typing import Dict
 
-from vnpy.api.sopt import (
+from ..api import (
     MdApi,
     TdApi,
     THOST_FTDC_OAS_Submitted,
@@ -114,9 +115,8 @@ OPTIONTYPE_SOPT2VT = {
 
 CHINA_TZ = pytz.timezone("Asia/Shanghai")
 
-symbol_exchange_map = {}
-symbol_name_map = {}
-symbol_size_map = {}
+# 合约数据全局缓存字典
+symbol_contract_map: Dict[str, ContractData] = {}
 
 
 class SoptGateway(BaseGateway):
@@ -279,19 +279,20 @@ class SoptMdApi(MdApi):
         """
         Callback of tick data update.
         """
-        symbol = data["InstrumentID"]
-        exchange = symbol_exchange_map.get(symbol, "")
-        if not exchange:
+        symbol: str = data["InstrumentID"]
+        contract: ContractData = symbol_contract_map.get(symbol, None)
+        if not contract:
             return
+
         timestamp = f"{data['TradingDay']} {data['UpdateTime']}.{int(data['UpdateMillisec']/100)}"
         dt = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S.%f")
         dt = CHINA_TZ.localize(dt)
 
         tick = TickData(
             symbol=symbol,
-            exchange=exchange,
+            exchange=contract.exchange,
             datetime=dt,
-            name=symbol_name_map[symbol],
+            name=contract.name,
             volume=data["Volume"],
             open_interest=data["OpenInterest"],
             last_price=data["LastPrice"],
@@ -466,12 +467,12 @@ class SoptTdApi(TdApi):
         order_ref = data["OrderRef"]
         orderid = f"{self.frontid}_{self.sessionid}_{order_ref}"
 
-        symbol = data["InstrumentID"]
-        exchange = symbol_exchange_map[symbol]
+        symbol: str = data["InstrumentID"]
+        contract: ContractData = symbol_contract_map[symbol]
 
         order = OrderData(
             symbol=symbol,
-            exchange=exchange,
+            exchange=contract.exchange,
             orderid=orderid,
             direction=DIRECTION_SOPT2VT[data["Direction"]],
             offset=OFFSET_SOPT2VT[data["CombOffsetFlag"]],
@@ -510,11 +511,13 @@ class SoptTdApi(TdApi):
         key = f"{data['InstrumentID'], data['PosiDirection']}"
         position = self.positions.get(key, None)
 
-        symbol = data["InstrumentID"]
+        symbol: str = data["InstrumentID"]
+        contract: ContractData = symbol_contract_map.get(symbol, None)
+
         if "&" in symbol:
             exchange = Exchange.SSE
         else:
-            exchange = symbol_exchange_map[data["InstrumentID"]]
+            exchange = contract.exchange
 
         if not position:
             position = PositionData(
@@ -534,7 +537,7 @@ class SoptTdApi(TdApi):
             position.yd_volume = data["Position"] - data["TodayPosition"]
 
         # Get contract size (spread contract has no size value)
-        size = symbol_size_map.get(position.symbol, 0)
+        size: int = contract.size
 
         # Calculate previous position cost
         cost = position.price * position.volume * size
@@ -607,9 +610,7 @@ class SoptTdApi(TdApi):
 
             self.gateway.on_contract(contract)
 
-            symbol_exchange_map[contract.symbol] = contract.exchange
-            symbol_name_map[contract.symbol] = contract.name
-            symbol_size_map[contract.symbol] = contract.size
+            symbol_contract_map[contract.symbol] = contract
 
         if last:
             self.gateway.write_log("合约信息查询成功")
@@ -626,9 +627,9 @@ class SoptTdApi(TdApi):
         """
         Callback of order status update.
         """
-        symbol = data["InstrumentID"]
-        exchange = symbol_exchange_map.get(symbol, "")
-        if not exchange:
+        symbol: str = data["InstrumentID"]
+        contract: ContractData = symbol_contract_map[symbol]
+        if not contract:
             self.order_data.append(data)
             return
 
@@ -643,7 +644,7 @@ class SoptTdApi(TdApi):
 
         order = OrderData(
             symbol=symbol,
-            exchange=exchange,
+            exchange=contract.exchange,
             orderid=orderid,
             type=ORDERTYPE_SOPT2VT[data["OrderPriceType"]],
             direction=DIRECTION_SOPT2VT[data["Direction"]],
@@ -663,9 +664,9 @@ class SoptTdApi(TdApi):
         """
         Callback of trade status update.
         """
-        symbol = data["InstrumentID"]
-        exchange = symbol_exchange_map.get(symbol, "")
-        if not exchange:
+        symbol: str = data["InstrumentID"]
+        contract = ContractData = symbol_contract_map[symbol]
+        if not contract:
             self.trade_data.append(data)
             return
 
@@ -677,7 +678,7 @@ class SoptTdApi(TdApi):
 
         trade = TradeData(
             symbol=symbol,
-            exchange=exchange,
+            exchange=contract.exchange,
             orderid=orderid,
             tradeid=data["TradeID"],
             direction=DIRECTION_SOPT2VT[data["Direction"]],
@@ -836,7 +837,7 @@ class SoptTdApi(TdApi):
         """
         Query position holding data.
         """
-        if not symbol_exchange_map:
+        if not symbol_contract_map:
             return
 
         req = {
