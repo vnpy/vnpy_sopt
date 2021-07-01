@@ -739,6 +739,14 @@ class SoptTdApi(TdApi):
 
     def send_order(self, req: OrderRequest) -> str:
         """委托下单"""
+        if req.offset not in OFFSET_VT2SOPT:
+            self.gateway.write_log("请选择开平方向")
+            return ""
+
+        if req.type not in ORDERTYPE_VT2SOPT:
+            self.gateway.write_log(f"当前接口不支持该类型的委托{req.type.value}")
+            return ""
+
         self.order_ref += 1
 
         sopt_req: dict = {
