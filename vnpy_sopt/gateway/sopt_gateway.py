@@ -514,7 +514,7 @@ class SoptTdApi(TdApi):
             exchange: Exchange = contract.exchange
 
         if not position:
-            position = PositionData(
+            position: PositionData = PositionData(
                 symbol=symbol,
                 exchange=exchange,
                 direction=DIRECTION_SOPT2VT[data["PosiDirection"]],
@@ -559,7 +559,10 @@ class SoptTdApi(TdApi):
 
     def onRspQryTradingAccount(self, data: dict, error: dict, reqid: int, last: bool) -> None:
         """资金查询回报"""
-        account = AccountData(
+        if "AccountID" not in data:
+            return
+
+        account: AccountData = AccountData(
             accountid=data["AccountID"],
             balance=data["Balance"],
             frozen=data["FrozenMargin"] + data["FrozenCash"] + data["FrozenCommission"],
