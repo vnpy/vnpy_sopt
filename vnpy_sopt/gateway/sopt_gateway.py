@@ -3,7 +3,7 @@ import pytz
 from datetime import datetime
 from time import sleep
 from vnpy.event.engine import EventEngine
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from ..api import (
     MdApi,
@@ -85,11 +85,13 @@ DIRECTION_SOPT2VT[THOST_FTDC_PD_Long] = Direction.LONG
 DIRECTION_SOPT2VT[THOST_FTDC_PD_Short] = Direction.SHORT
 
 # 委托类型映射
-ORDERTYPE_VT2SOPT: Dict[OrderType, str] = {
-    OrderType.LIMIT: THOST_FTDC_OPT_LimitPrice,
-    OrderType.MARKET: THOST_FTDC_OPT_AnyPrice
+ORDERTYPE_VT2SOPT: Dict[OrderType, Tuple] = {
+    OrderType.LIMIT: (THOST_FTDC_OPT_LimitPrice, THOST_FTDC_TC_GFD, THOST_FTDC_VC_AV),
+    OrderType.MARKET: (THOST_FTDC_OPT_AnyPrice, THOST_FTDC_TC_GFD, THOST_FTDC_VC_AV),
+    OrderType.FAK: (THOST_FTDC_OPT_LimitPrice, THOST_FTDC_TC_IOC, THOST_FTDC_VC_AV),
+    OrderType.FOK: (THOST_FTDC_OPT_LimitPrice, THOST_FTDC_TC_IOC, THOST_FTDC_VC_CV),
 }
-ORDERTYPE_SOPT2VT: Dict[str, OrderType] = {v: k for k, v in ORDERTYPE_VT2SOPT.items()}
+ORDERTYPE_SOPT2VT: Dict[Tuple, OrderType] = {v: k for k, v in ORDERTYPE_VT2SOPT.items()}
 
 # 开平方向映射
 OFFSET_VT2SOPT: Dict[Offset, str] = {
@@ -633,11 +635,13 @@ class SoptTdApi(TdApi):
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
         dt: datetime = CHINA_TZ.localize(dt)
 
+        tp = (data["OrderPriceType"], data["TimeCondition"], data["VolumeCondition"])
+
         order: OrderData = OrderData(
             symbol=symbol,
             exchange=contract.exchange,
             orderid=orderid,
-            type=ORDERTYPE_SOPT2VT[data["OrderPriceType"]],
+            type=ORDERTYPE_SOPT2VT[tp],
             direction=DIRECTION_SOPT2VT[data["Direction"]],
             offset=OFFSET_SOPT2VT[data["CombOffsetFlag"]],
             price=data["LimitPrice"],
@@ -749,12 +753,15 @@ class SoptTdApi(TdApi):
 
         self.order_ref += 1
 
+        tp = ORDERTYPE_VT2SOPT[req.type]
+        price_type, time_condition, volume_condition = tp
+
         sopt_req: dict = {
             "InstrumentID": req.symbol,
             "ExchangeID": req.exchange.value,
             "LimitPrice": req.price,
             "VolumeTotalOriginal": int(req.volume),
-            "OrderPriceType": ORDERTYPE_VT2SOPT.get(req.type, ""),
+            "OrderPriceType": price_type,
             "Direction": DIRECTION_VT2SOPT.get(req.direction, ""),
             "CombOffsetFlag": OFFSET_VT2SOPT.get(req.offset, ""),
             "OrderRef": str(self.order_ref),
@@ -765,19 +772,10 @@ class SoptTdApi(TdApi):
             "ContingentCondition": THOST_FTDC_CC_Immediately,
             "ForceCloseReason": THOST_FTDC_FCC_NotForceClose,
             "IsAutoSuspend": 0,
-            "TimeCondition": THOST_FTDC_TC_GFD,
-            "VolumeCondition": THOST_FTDC_VC_AV,
+            "TimeCondition": time_condition,
+            "VolumeCondition": volume_condition,
             "MinVolume": 1
         }
-
-        if req.type == OrderType.FAK:
-            sopt_req["OrderPriceType"] = THOST_FTDC_OPT_LimitPrice
-            sopt_req["TimeCondition"] = THOST_FTDC_TC_IOC
-            sopt_req["VolumeCondition"] = THOST_FTDC_VC_AV
-        elif req.type == OrderType.FOK:
-            sopt_req["OrderPriceType"] = THOST_FTDC_OPT_LimitPrice
-            sopt_req["TimeCondition"] = THOST_FTDC_TC_IOC
-            sopt_req["VolumeCondition"] = THOST_FTDC_VC_CV
 
         self.reqid += 1
         self.reqOrderInsert(sopt_req, self.reqid)
