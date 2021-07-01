@@ -65,7 +65,7 @@ from vnpy.trader.event import EVENT_TIMER
 
 
 # 委托状态映射
-STATUS_SOPT2VT = {
+STATUS_SOPT2VT: Dict[str, Status] = {
     THOST_FTDC_OAS_Submitted: Status.SUBMITTING,
     THOST_FTDC_OAS_Accepted: Status.SUBMITTING,
     THOST_FTDC_OAS_Rejected: Status.REJECTED,
@@ -76,45 +76,45 @@ STATUS_SOPT2VT = {
 }
 
 # 多空方向映射
-DIRECTION_VT2SOPT = {
+DIRECTION_VT2SOPT: Dict[Direction, str] = {
     Direction.LONG: THOST_FTDC_D_Buy,
     Direction.SHORT: THOST_FTDC_D_Sell
 }
-DIRECTION_SOPT2VT = {v: k for k, v in DIRECTION_VT2SOPT.items()}
+DIRECTION_SOPT2VT: Dict[str, Direction] = {v: k for k, v in DIRECTION_VT2SOPT.items()}
 DIRECTION_SOPT2VT[THOST_FTDC_PD_Long] = Direction.LONG
 DIRECTION_SOPT2VT[THOST_FTDC_PD_Short] = Direction.SHORT
 
 # 委托类型映射
-ORDERTYPE_VT2SOPT = {
+ORDERTYPE_VT2SOPT: Dict[OrderType, str] = {
     OrderType.LIMIT: THOST_FTDC_OPT_LimitPrice,
     OrderType.MARKET: THOST_FTDC_OPT_AnyPrice
 }
-ORDERTYPE_SOPT2VT = {v: k for k, v in ORDERTYPE_VT2SOPT.items()}
+ORDERTYPE_SOPT2VT: Dict[str, OrderType] = {v: k for k, v in ORDERTYPE_VT2SOPT.items()}
 
 # 开平方向映射
-OFFSET_VT2SOPT = {
+OFFSET_VT2SOPT: Dict[Offset, str] = {
     Offset.OPEN: THOST_FTDC_OF_Open,
     Offset.CLOSE: THOST_FTDC_OFEN_Close,
     Offset.CLOSETODAY: THOST_FTDC_OFEN_CloseToday,
     Offset.CLOSEYESTERDAY: THOST_FTDC_OFEN_CloseYesterday,
 }
-OFFSET_SOPT2VT = {v: k for k, v in OFFSET_VT2SOPT.items()}
+OFFSET_SOPT2VT: Dict[str, Offset] = {v: k for k, v in OFFSET_VT2SOPT.items()}
 
 # 交易所映射
-EXCHANGE_SOPT2VT = {
+EXCHANGE_SOPT2VT: Dict[str, Exchange] = {
     "SZSE": Exchange.SZSE,
     "SSE": Exchange.SSE
 }
 
 # 产品类型映射
-PRODUCT_SOPT2VT = {
+PRODUCT_SOPT2VT: Dict[str, Product] = {
     THOST_FTDC_PC_Stock: Product.EQUITY,
     THOST_FTDC_PC_ETFOption: Product.OPTION,
     THOST_FTDC_PC_Combination: Product.SPREAD
 }
 
 # 期权类型映射
-OPTIONTYPE_SOPT2VT = {
+OPTIONTYPE_SOPT2VT: Dict[str, OptionType] = {
     THOST_FTDC_CP_CallOptions: OptionType.CALL,
     THOST_FTDC_CP_PutOptions: OptionType.PUT
 }
