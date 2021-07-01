@@ -138,8 +138,7 @@ class SoptGateway(BaseGateway):
         "交易服务器": "",
         "行情服务器": "",
         "产品名称": "",
-        "授权编码": "",
-        "产品信息": ""
+        "授权编码": ""
     }
 
     exchanges: List[str] = list(EXCHANGE_SOPT2VT.values())
@@ -160,14 +159,13 @@ class SoptGateway(BaseGateway):
         md_address: str = setting["行情服务器"]
         appid: str = setting["产品名称"]
         auth_code: str = setting["授权编码"]
-        product_info: str = setting["产品信息"]
 
         if not td_address.startswith("tcp://"):
             td_address = "tcp://" + td_address
         if not md_address.startswith("tcp://"):
             md_address = "tcp://" + md_address
 
-        self.td_api.connect(td_address, userid, password, brokerid, auth_code, appid, product_info)
+        self.td_api.connect(td_address, userid, password, brokerid, auth_code, appid)
         self.md_api.connect(md_address, userid, password, brokerid)
 
         self.init_query()
@@ -405,7 +403,6 @@ class SoptTdApi(TdApi):
         self.brokerid: str = ""
         self.auth_code: str = ""
         self.appid: str = ""
-        self.product_info: str = ""
 
         self.frontid: int = 0
         self.sessionid: int = 0
@@ -690,8 +687,7 @@ class SoptTdApi(TdApi):
         password: str,
         brokerid: int,
         auth_code: str,
-        appid: str,
-        product_info
+        appid: str
     ) -> None:
         """连接服务器"""
         self.userid = userid
@@ -699,7 +695,6 @@ class SoptTdApi(TdApi):
         self.brokerid = brokerid
         self.auth_code = auth_code
         self.appid = appid
-        self.product_info = product_info
 
         if not self.connect_status:
             path: Path = get_folder_path(self.gateway_name.lower())
@@ -724,9 +719,6 @@ class SoptTdApi(TdApi):
             "AppID": self.appid
         }
 
-        if self.product_info:
-            req["UserProductInfo"] = self.product_info
-
         self.reqid += 1
         self.reqAuthenticate(req, self.reqid)
 
@@ -741,9 +733,6 @@ class SoptTdApi(TdApi):
             "BrokerID": self.brokerid,
             "AppID": self.appid
         }
-
-        if self.product_info:
-            req["UserProductInfo"] = self.product_info
 
         self.reqid += 1
         self.reqUserLogin(req, self.reqid)
