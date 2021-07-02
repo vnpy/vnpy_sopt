@@ -507,49 +507,52 @@ class SoptTdApi(TdApi):
         if not data:
             return
 
-        # 获取之前缓存的持仓数据缓存
-        key: str = f"{data['InstrumentID'], data['PosiDirection']}"
-        position: PositionData = self.positions.get(key, None)
-
+        # 必须已经收到了合约信息后才能处理
         symbol: str = data["InstrumentID"]
         contract: ContractData = symbol_contract_map.get(symbol, None)
 
-        if "&" in symbol:
-            exchange: Exchange = Exchange.SSE
-        else:
-            exchange: Exchange = contract.exchange
-
-        if not position:
-            position: PositionData = PositionData(
-                symbol=symbol,
-                exchange=exchange,
-                direction=DIRECTION_SOPT2VT[data["PosiDirection"]],
-                gateway_name=self.gateway_name
-            )
-            self.positions[key] = position
-
-        position.yd_volume = data["Position"] - data["TodayPosition"]
-
-        # 获取合约的乘数信息
-        size: int = contract.size
-
-        # 计算之前已有仓位的持仓总成本
-        cost = position.price * position.volume * size
-
-        # 累加更新持仓数量和盈亏
-        position.volume += data["Position"]
-        position.pnl += data["PositionProfit"]
-
-        # 计算更新后的持仓总成本和均价
-        if position.volume and size:
-            cost += data["PositionCost"]
-            position.price = cost / (position.volume * size)
-
-        # 更新仓位冻结数量
-        if position.direction == Direction.LONG:
-            position.frozen += data["ShortFrozen"]
-        else:
-            position.frozen += data["LongFrozen"]
+        if contract:
+            # 获取之前缓存的持仓数据缓存
+            key: str = f"{data['InstrumentID'], data['PosiDirection']}"
+            position: PositionData = self.positions.get(key, None)
+    
+            if "&" in symbol:
+                exchange: Exchange = Exchange.SSE
+            else:
+                exchange: Exchange = contract.exchange
+    
+            if not position:
+                position: PositionData = PositionData(
+                    symbol=symbol,
+                    exchange=exchange,
+                    direction=DIRECTION_SOPT2VT[data["PosiDirection"]],
+                    gateway_name=self.gateway_name
+                )
+                self.positions[key] = position
+    
+            # 计算昨仓
+            position.yd_volume = data["Position"] - data["TodayPosition"]
+    
+            # 获取合约的乘数信息
+            size: int = contract.size
+    
+            # 计算之前已有仓位的持仓总成本
+            cost: float = position.price * position.volume * size
+    
+            # 累加更新持仓数量和盈亏
+            position.volume += data["Position"]
+            position.pnl += data["PositionProfit"]
+    
+            # 计算更新后的持仓总成本和均价
+            if position.volume and size:
+                cost += data["PositionCost"]
+                position.price = cost / (position.volume * size)
+    
+            # 更新仓位冻结数量
+            if position.direction == Direction.LONG:
+                position.frozen += data["ShortFrozen"]
+            else:
+                position.frozen += data["LongFrozen"]
 
         if last:
             for position in self.positions.values():
