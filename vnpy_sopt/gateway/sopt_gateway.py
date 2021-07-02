@@ -492,8 +492,15 @@ class SoptTdApi(TdApi):
         """确认结算单回报"""
         self.gateway.write_log("结算信息确认成功")
 
-        self.reqid += 1
-        self.reqQryInstrument({}, self.reqid)
+        # 由于流控，单次查询可能失败，通过while循环持续尝试，直到成功发出请求
+        while True:
+            self.reqid += 1
+            n: int = self.reqQryInstrument({}, self.reqid)
+
+            if not n:
+                break
+            else:
+                sleep(1)
 
     def onRspQryInvestorPosition(self, data: dict, error: dict, reqid: int, last: bool) -> None:
         """持仓查询回报"""
