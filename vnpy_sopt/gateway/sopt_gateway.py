@@ -528,13 +528,7 @@ class SoptTdApi(TdApi):
             )
             self.positions[key] = position
 
-        # 对于上期所昨仓需要特殊处理
-        if position.exchange == Exchange.SHFE:
-            if data["YdPosition"] and not data["TodayPosition"]:
-                position.yd_volume = data["Position"]
-        # 对于其他交易所昨仓的计算
-        else:
-            position.yd_volume = data["Position"] - data["TodayPosition"]
+        position.yd_volume = data["Position"] - data["TodayPosition"]
 
         # 获取合约的乘数信息
         size: int = contract.size
