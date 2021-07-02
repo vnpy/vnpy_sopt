@@ -348,16 +348,6 @@ class SoptMdApi(MdApi):
 
             self.connect_status = True
 
-            # Sleep一秒然后查看登录状态
-            # 华鑫期货CTP期权系统的bug的临时补丁
-            sleep(1)
-            if not self.login_status:
-                self.onFrontConnected()
-
-        # 如果已经连接，马上登录
-        elif not self.login_status:
-            self.login()
-
     def login(self) -> None:
         """用户登录"""
         req: dict = {
