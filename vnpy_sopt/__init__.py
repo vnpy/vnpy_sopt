@@ -29,4 +29,7 @@ except ImportError:
 import importlib_metadata
 
 
-__version__ = importlib_metadata.version("vnpy_sopt")
+try:
+    __version__ = importlib_metadata.version("vnpy_sopt")
+except importlib_metadata.PackageNotFoundError:
+    __version__ = "dev"

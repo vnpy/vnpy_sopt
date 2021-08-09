@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-2021.4.21.5-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-3.5.5.0-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows|linux-yellow.svg"/>
     <img src ="https://img.shields.io/badge/python-3.7-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
@@ -13,7 +13,7 @@
 
 ## 说明
 
-基于CTP期权版的实盘20190802接口封装开发，接口中自带的是【穿透式实盘环境】的dll文件。
+基于CTP期权版的3.5.5接口封装开发，接口中自带的是【穿透式实盘环境】的dll文件。
 
 ## 安装
 
