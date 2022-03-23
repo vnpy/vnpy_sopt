@@ -135,7 +135,7 @@ class SoptGateway(BaseGateway):
 
     default_name: str = "SOPT"
 
-    default_setting = {
+    default_setting: Dict[str, str] = {
         "用户名": "",
         "密码": "",
         "经纪商代码": "",
@@ -203,7 +203,7 @@ class SoptGateway(BaseGateway):
         """输出错误信息日志"""
         error_id: int = error["ErrorID"]
         error_msg: str = error["ErrorMsg"]
-        msg = f"{msg}，代码：{error_id}，信息：{error_msg}"
+        msg: str = f"{msg}，代码：{error_id}，信息：{error_msg}"
         self.write_log(msg)
 
     def process_timer_event(self, event) -> None:
@@ -238,11 +238,11 @@ class SoptMdApi(MdApi):
 
         self.connect_status: bool = False
         self.login_status: bool = False
-        self.subscribed: List[str] = set()
+        self.subscribed: set = set()
 
-        self.userid = ""
-        self.password = ""
-        self.brokerid = ""
+        self.userid: str = ""
+        self.password: str = ""
+        self.brokerid: str = ""
 
     def onFrontConnected(self) -> None:
         """服务器连接成功回报"""
@@ -476,10 +476,6 @@ class SoptTdApi(TdApi):
         """委托撤单失败回报"""
         self.gateway.write_error("交易撤单失败", error)
 
-    def onRspQueryMaxOrderVolume(self, data: dict, error: dict, reqid: int, last: bool) -> None:
-        """最大报单数量查询回报"""
-        pass
-
     def onRspSettlementInfoConfirm(self, data: dict, error: dict, reqid: int, last: bool) -> None:
         """确认结算单回报"""
         self.gateway.write_log("结算信息确认成功")
@@ -631,7 +627,7 @@ class SoptTdApi(TdApi):
         dt: datetime = datetime.strptime(timestamp, "%Y%m%d %H:%M:%S")
         dt: datetime = CHINA_TZ.localize(dt)
 
-        tp = (data["OrderPriceType"], data["TimeCondition"], data["VolumeCondition"])
+        tp: tuple = (data["OrderPriceType"], data["TimeCondition"], data["VolumeCondition"])
 
         order: OrderData = OrderData(
             symbol=symbol,
@@ -749,7 +745,7 @@ class SoptTdApi(TdApi):
 
         self.order_ref += 1
 
-        tp = ORDERTYPE_VT2SOPT[req.type]
+        tp: tuple = ORDERTYPE_VT2SOPT[req.type]
         price_type, time_condition, volume_condition = tp
 
         sopt_req: dict = {
@@ -826,7 +822,7 @@ class SoptTdApi(TdApi):
 
 def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:
     """获取期权指数"""
-    exchange_instrument_id = exchange_instrument_id.replace(" ", "")
+    exchange_instrument_id: str = exchange_instrument_id.replace(" ", "")
 
     if "M" in exchange_instrument_id:
         n = exchange_instrument_id.index("M")
@@ -837,7 +833,7 @@ def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:
     else:
         return str(strike_price)
 
-    index = exchange_instrument_id[n:]
-    option_index = f"{strike_price:.3f}-{index}"
+    index: str = exchange_instrument_id[n:]
+    option_index: str = f"{strike_price:.3f}-{index}"
 
     return option_index
