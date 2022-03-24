@@ -130,7 +130,7 @@ symbol_contract_map: Dict[str, ContractData] = {}
 
 class SoptGateway(BaseGateway):
     """
-    vn.py用于对接期权CTP柜台的交易接口。
+    VeighNa用于对接期权CTP柜台的交易接口。
     """
 
     default_name: str = "SOPT"
@@ -503,12 +503,12 @@ class SoptTdApi(TdApi):
             # 获取之前缓存的持仓数据缓存
             key: str = f"{data['InstrumentID'], data['PosiDirection']}"
             position: PositionData = self.positions.get(key, None)
-    
+
             if "&" in symbol:
                 exchange: Exchange = Exchange.SSE
             else:
                 exchange: Exchange = contract.exchange
-    
+
             if not position:
                 position: PositionData = PositionData(
                     symbol=symbol,
@@ -517,25 +517,25 @@ class SoptTdApi(TdApi):
                     gateway_name=self.gateway_name
                 )
                 self.positions[key] = position
-    
+
             # 计算昨仓
             position.yd_volume = data["Position"] - data["TodayPosition"]
-    
+
             # 获取合约的乘数信息
             size: int = contract.size
-    
+
             # 计算之前已有仓位的持仓总成本
             cost: float = position.price * position.volume * size
-    
+
             # 累加更新持仓数量和盈亏
             position.volume += data["Position"]
             position.pnl += data["PositionProfit"]
-    
+
             # 计算更新后的持仓总成本和均价
             if position.volume and size:
                 cost += data["PositionCost"]
                 position.price = cost / (position.volume * size)
-    
+
             # 更新仓位冻结数量
             if position.direction == Direction.LONG:
                 position.frozen += data["ShortFrozen"]
