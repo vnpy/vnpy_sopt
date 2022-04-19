@@ -511,7 +511,7 @@ class SoptTdApi(TdApi):
                 exchange: Exchange = contract.exchange
 
             if not position:
-                position: PositionData = PositionData(
+                position = PositionData(
                     symbol=symbol,
                     exchange=exchange,
                     direction=DIRECTION_SOPT2VT[data["PosiDirection"]],
@@ -826,11 +826,11 @@ def get_option_index(strike_price: float, exchange_instrument_id: str) -> str:
     exchange_instrument_id: str = exchange_instrument_id.replace(" ", "")
 
     if "M" in exchange_instrument_id:
-        n = exchange_instrument_id.index("M")
+        n: int = exchange_instrument_id.index("M")
     elif "A" in exchange_instrument_id:
-        n = exchange_instrument_id.index("A")
+        n: int = exchange_instrument_id.index("A")
     elif "B" in exchange_instrument_id:
-        n = exchange_instrument_id.index("B")
+        n: int = exchange_instrument_id.index("B")
     else:
         return str(strike_price)
 
