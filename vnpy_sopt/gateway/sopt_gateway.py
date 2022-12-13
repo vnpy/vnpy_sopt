@@ -770,7 +770,10 @@ class SoptTdApi(TdApi):
         }
 
         self.reqid += 1
-        self.reqOrderInsert(sopt_req, self.reqid)
+        n: int = self.reqOrderInsert(sopt_req, self.reqid)
+        if n:
+            self.gateway.write_log(f"委托请求发送失败，错误代码：{n}")
+            return ""
 
         orderid: str = f"{self.frontid}_{self.sessionid}_{self.order_ref}"
         order: OrderData = req.create_order_data(orderid, self.gateway_name)
