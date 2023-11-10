@@ -225,11 +225,17 @@ public:
 	///请求查询ETF期权合约手续费响应
 	virtual void OnRspQryETFOptionInstrCommRate(CThostFtdcETFOptionInstrCommRateField *pETFOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
+	///请求查询持仓限制
+	virtual void OnRspQryLimitPosi(CThostFtdcLimitPosiField *pLimitPosi, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
 	///请求查询投资者分级
 	virtual void OnRspQryInvestorLevel(CThostFtdcInvestorLevelField *pInvestorLevel, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
 	///请求查询E+1日行权冻结响应
 	virtual void OnRspQryExecFreeze(CThostFtdcExecFreezeField *pExecFreeze, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///请求查询金额限制
+	virtual void OnRspQryLimitAmount(CThostFtdcLimitAmountField *pLimitAmount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
 	///请求查询组合合约安全系数响应
 	virtual void OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *pCombInstrumentGuard, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
@@ -428,6 +434,18 @@ public:
 
 	///行权指令合并通知
 	virtual void OnRtnExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineOrder) {};
+
+	///资金内转响应
+	virtual void OnRspInternalTransfer(CThostFtdcInputInternalTransferField *pInputInternalTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///资金内转
+	virtual void OnRtnInternalTransfer(CThostFtdcRtnInternalTransferField *pRtnInternalTransfer) {};
+
+	///请求查询资金记录响应
+	virtual void OnRspQryInternalTransfer(CThostFtdcInternalTransferField *pInternalTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///请求查询对应的期货资金账户响应
+	virtual void OnRspQryFutureTradingAccount(CThostFtdcNtfQryFutureTradingAccountField *pNtfQryFutureTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 };
 
 class TRADER_API_EXPORT CThostFtdcTraderApi
@@ -682,11 +700,17 @@ public:
 	///请求查询ETF期权合约手续费
 	virtual int ReqQryETFOptionInstrCommRate(CThostFtdcQryETFOptionInstrCommRateField *pQryETFOptionInstrCommRate, int nRequestID) = 0;
 
+	///请求查询持仓限制
+	virtual int ReqQryLimitPosi(CThostFtdcQryLimitPosiField *pQryLimitPosi, int nRequestID) = 0;
+
 	///请求查询投资者分级
 	virtual int ReqQryInvestorLevel(CThostFtdcQryInvestorLevelField *pQryInvestorLevel, int nRequestID) = 0;
 
 	///请求查询E+1日行权冻结
 	virtual int ReqQryExecFreeze(CThostFtdcQryExecFreezeField *pQryExecFreeze, int nRequestID) = 0;
+
+	///请求查询金额限制
+	virtual int ReqQryLimitAmount(CThostFtdcQryLimitAmountField *pQryLimitAmount, int nRequestID) = 0;
 
 	///请求查询组合合约安全系数
 	virtual int ReqQryCombInstrumentGuard(CThostFtdcQryCombInstrumentGuardField *pQryCombInstrumentGuard, int nRequestID) = 0;
@@ -747,6 +771,15 @@ public:
 
 	///请求查询行权指令合并
 	virtual int ReqQryExecCombineOrder(CThostFtdcQryExecCombineOrderField *pQryExecCombineOrder, int nRequestID) = 0;
+
+	///请求资金内转
+	virtual int ReqInternalTransfer(CThostFtdcInputInternalTransferField *pInputInternalTransfer, int nRequestID) = 0;
+
+	///请求查询资金记录
+	virtual int ReqQryInternalTransfer(CThostFtdcQryInternalTransferField *pQryInternalTransfer, int nRequestID) = 0;
+
+	///请求查询对应的期货资金账户
+	virtual int ReqQryFutureTradingAccount(CThostFtdcQryFutureTradingAccountField *pQryFutureTradingAccount, int nRequestID) = 0;
 protected:
 	~CThostFtdcTraderApi(){};
 };
