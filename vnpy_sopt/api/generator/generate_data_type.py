@@ -2,6 +2,7 @@
 
 TYPE_CPP2PY = {
     "int": "int",
+    "long long": "int",
     "char": "char",
     "double": "double",
     "short": "int",
@@ -59,8 +60,12 @@ class DataTypeGenerator:
         words = line.split(" ")
         words = [word for word in words if word != " "]
 
-        name = words[2]
-        typedef = TYPE_CPP2PY[words[1]]
+        if "long long" in line:
+            name = words[3]
+            typedef = "int"
+        else:
+            name = words[2]
+            typedef = TYPE_CPP2PY[words[1]]
 
         if typedef == "char":
             if "[" in name:
@@ -68,6 +73,10 @@ class DataTypeGenerator:
                 name = name[:name.index("[")]
 
         new_line = f"{name} = \"{typedef}\"\n"
+
+        if "long long" in line:
+            print(line)
+            print(new_line)
         self.f_typedef.write(new_line)
 
 
