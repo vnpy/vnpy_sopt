@@ -1,8 +1,9 @@
-ï»¿#include "vnsopttd.h"
+#include "vnsopttd.h"
 
-///////////////////////////////////////////////////////////////////////////
-/////////////åŽŸç”Ÿå›žè°ƒæŽ¥å£ç”Ÿæˆtask
-///////////////////////////////////////////////////////////////////////////
+///-------------------------------------------------------------------------------------
+///C++µÄ»Øµ÷º¯Êý½«Êý¾Ý±£´æµ½¶ÓÁÐÖÐ
+///-------------------------------------------------------------------------------------
+
 void TdApi::OnFrontConnected()
 {
 	Task task = Task();
@@ -26,7 +27,7 @@ void TdApi::OnHeartBeatWarning(int nTimeLapse)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPAUTHENTICATE;
@@ -47,7 +48,7 @@ void TdApi::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateFi
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -68,7 +69,7 @@ void TdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtd
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -89,7 +90,7 @@ void TdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRs
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERPASSWORDUPDATE;
@@ -110,7 +111,7 @@ void TdApi::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPass
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPTRADINGACCOUNTPASSWORDUPDATE;
@@ -131,7 +132,7 @@ void TdApi::OnRspTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUp
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERINSERT;
@@ -152,7 +153,7 @@ void TdApi::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcR
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPPARKEDORDERINSERT;
@@ -173,7 +174,7 @@ void TdApi::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPPARKEDORDERACTION;
@@ -194,7 +195,7 @@ void TdApi::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrde
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPORDERACTION;
@@ -215,7 +216,7 @@ void TdApi::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction,
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField *pQueryMaxOrderVolume, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField *pQueryMaxOrderVolume, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQUERYMAXORDERVOLUME;
@@ -236,7 +237,7 @@ void TdApi::OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField *pQueryM
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSETTLEMENTINFOCONFIRM;
@@ -257,7 +258,7 @@ void TdApi::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPREMOVEPARKEDORDER;
@@ -278,7 +279,7 @@ void TdApi::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemovePark
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPREMOVEPARKEDORDERACTION;
@@ -299,7 +300,7 @@ void TdApi::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField 
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPEXECORDERINSERT;
@@ -320,7 +321,7 @@ void TdApi::OnRspExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder,
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspExecOrderAction(CThostFtdcInputExecOrderActionField *pInputExecOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspExecOrderAction(CThostFtdcInputExecOrderActionField *pInputExecOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPEXECORDERACTION;
@@ -341,7 +342,7 @@ void TdApi::OnRspExecOrderAction(CThostFtdcInputExecOrderActionField *pInputExec
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPFORQUOTEINSERT;
@@ -362,7 +363,7 @@ void TdApi::OnRspForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CT
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQUOTEINSERT;
@@ -383,7 +384,7 @@ void TdApi::OnRspQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcR
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQuoteAction(CThostFtdcInputQuoteActionField *pInputQuoteAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQuoteAction(CThostFtdcInputQuoteActionField *pInputQuoteAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQUOTEACTION;
@@ -404,7 +405,7 @@ void TdApi::OnRspQuoteAction(CThostFtdcInputQuoteActionField *pInputQuoteAction,
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPLOCKINSERT;
@@ -425,7 +426,7 @@ void TdApi::OnRspLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcRspI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionField *pInputBatchOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionField *pInputBatchOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPBATCHORDERACTION;
@@ -446,7 +447,7 @@ void TdApi::OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionField *pInputBa
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPCOMBACTIONINSERT;
@@ -467,7 +468,7 @@ void TdApi::OnRspCombActionInsert(CThostFtdcInputCombActionField *pInputCombActi
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYORDER;
@@ -488,7 +489,7 @@ void TdApi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADE;
@@ -509,7 +510,7 @@ void TdApi::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORPOSITION;
@@ -530,7 +531,7 @@ void TdApi::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorP
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGACCOUNT;
@@ -551,7 +552,7 @@ void TdApi::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccoun
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestor(CThostFtdcInvestorField *pInvestor, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInvestor(CThostFtdcInvestorField *pInvestor, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTOR;
@@ -572,7 +573,7 @@ void TdApi::OnRspQryInvestor(CThostFtdcInvestorField *pInvestor, CThostFtdcRspIn
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTradingCode(CThostFtdcTradingCodeField *pTradingCode, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTradingCode(CThostFtdcTradingCodeField *pTradingCode, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGCODE;
@@ -593,7 +594,7 @@ void TdApi::OnRspQryTradingCode(CThostFtdcTradingCodeField *pTradingCode, CThost
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateField *pInstrumentMarginRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateField *pInstrumentMarginRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINSTRUMENTMARGINRATE;
@@ -614,7 +615,7 @@ void TdApi::OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateField *pI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINSTRUMENTCOMMISSIONRATE;
@@ -635,7 +636,7 @@ void TdApi::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateF
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGE;
@@ -656,7 +657,7 @@ void TdApi::OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRspIn
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryProduct(CThostFtdcProductField *pProduct, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryProduct(CThostFtdcProductField *pProduct, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPRODUCT;
@@ -677,7 +678,7 @@ void TdApi::OnRspQryProduct(CThostFtdcProductField *pProduct, CThostFtdcRspInfoF
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINSTRUMENT;
@@ -698,7 +699,7 @@ void TdApi::OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument, CThostFtd
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYDEPTHMARKETDATA;
@@ -719,7 +720,7 @@ void TdApi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarket
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQrySettlementInfo(CThostFtdcSettlementInfoField *pSettlementInfo, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQrySettlementInfo(CThostFtdcSettlementInfoField *pSettlementInfo, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSETTLEMENTINFO;
@@ -740,7 +741,7 @@ void TdApi::OnRspQrySettlementInfo(CThostFtdcSettlementInfoField *pSettlementInf
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTransferBank(CThostFtdcTransferBankField *pTransferBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTransferBank(CThostFtdcTransferBankField *pTransferBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRANSFERBANK;
@@ -761,7 +762,7 @@ void TdApi::OnRspQryTransferBank(CThostFtdcTransferBankField *pTransferBank, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailField *pInvestorPositionDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailField *pInvestorPositionDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORPOSITIONDETAIL;
@@ -782,7 +783,7 @@ void TdApi::OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailField
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryNotice(CThostFtdcNoticeField *pNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryNotice(CThostFtdcNoticeField *pNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYNOTICE;
@@ -803,7 +804,7 @@ void TdApi::OnRspQryNotice(CThostFtdcNoticeField *pNotice, CThostFtdcRspInfoFiel
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQrySettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQrySettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSETTLEMENTINFOCONFIRM;
@@ -824,7 +825,7 @@ void TdApi::OnRspQrySettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionCombineDetailField *pInvestorPositionCombineDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionCombineDetailField *pInvestorPositionCombineDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORPOSITIONCOMBINEDETAIL;
@@ -845,7 +846,7 @@ void TdApi::OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionComb
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyField *pCFMMCTradingAccountKey, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyField *pCFMMCTradingAccountKey, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCFMMCTRADINGACCOUNTKEY;
@@ -866,7 +867,7 @@ void TdApi::OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyField
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetField *pEWarrantOffset, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetField *pEWarrantOffset, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEWARRANTOFFSET;
@@ -887,7 +888,7 @@ void TdApi::OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetField *pEWarrantOffse
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMarginField *pInvestorProductGroupMargin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMarginField *pInvestorProductGroupMargin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORPRODUCTGROUPMARGIN;
@@ -908,7 +909,7 @@ void TdApi::OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMar
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExchangeMarginRate(CThostFtdcExchangeMarginRateField *pExchangeMarginRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExchangeMarginRate(CThostFtdcExchangeMarginRateField *pExchangeMarginRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGEMARGINRATE;
@@ -929,7 +930,7 @@ void TdApi::OnRspQryExchangeMarginRate(CThostFtdcExchangeMarginRateField *pExcha
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExchangeMarginRateAdjust(CThostFtdcExchangeMarginRateAdjustField *pExchangeMarginRateAdjust, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExchangeMarginRateAdjust(CThostFtdcExchangeMarginRateAdjustField *pExchangeMarginRateAdjust, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGEMARGINRATEADJUST;
@@ -950,7 +951,7 @@ void TdApi::OnRspQryExchangeMarginRateAdjust(CThostFtdcExchangeMarginRateAdjustF
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExchangeRate(CThostFtdcExchangeRateField *pExchangeRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExchangeRate(CThostFtdcExchangeRateField *pExchangeRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXCHANGERATE;
@@ -971,7 +972,7 @@ void TdApi::OnRspQryExchangeRate(CThostFtdcExchangeRateField *pExchangeRate, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *pSecAgentACIDMap, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *pSecAgentACIDMap, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYSECAGENTACIDMAP;
@@ -992,7 +993,7 @@ void TdApi::OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *pSecAgentACI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryProductExchRate(CThostFtdcProductExchRateField *pProductExchRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryProductExchRate(CThostFtdcProductExchRateField *pProductExchRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPRODUCTEXCHRATE;
@@ -1013,7 +1014,7 @@ void TdApi::OnRspQryProductExchRate(CThostFtdcProductExchRateField *pProductExch
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryProductGroup(CThostFtdcProductGroupField *pProductGroup, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryProductGroup(CThostFtdcProductGroupField *pProductGroup, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPRODUCTGROUP;
@@ -1034,7 +1035,7 @@ void TdApi::OnRspQryProductGroup(CThostFtdcProductGroupField *pProductGroup, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateField *pMMInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateField *pMMInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYMMINSTRUMENTCOMMISSIONRATE;
@@ -1055,7 +1056,7 @@ void TdApi::OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionR
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryMMOptionInstrCommRate(CThostFtdcMMOptionInstrCommRateField *pMMOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryMMOptionInstrCommRate(CThostFtdcMMOptionInstrCommRateField *pMMOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYMMOPTIONINSTRCOMMRATE;
@@ -1076,7 +1077,7 @@ void TdApi::OnRspQryMMOptionInstrCommRate(CThostFtdcMMOptionInstrCommRateField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRateField *pInstrumentOrderCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRateField *pInstrumentOrderCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINSTRUMENTORDERCOMMRATE;
@@ -1097,7 +1098,7 @@ void TdApi::OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRateFie
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostField *pOptionInstrTradeCost, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostField *pOptionInstrTradeCost, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYOPTIONINSTRTRADECOST;
@@ -1118,7 +1119,7 @@ void TdApi::OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostField *pO
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateField *pOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateField *pOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYOPTIONINSTRCOMMRATE;
@@ -1139,7 +1140,7 @@ void TdApi::OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateField *pOpt
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExecOrder(CThostFtdcExecOrderField *pExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExecOrder(CThostFtdcExecOrderField *pExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXECORDER;
@@ -1160,7 +1161,7 @@ void TdApi::OnRspQryExecOrder(CThostFtdcExecOrderField *pExecOrder, CThostFtdcRs
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryForQuote(CThostFtdcForQuoteField *pForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryForQuote(CThostFtdcForQuoteField *pForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYFORQUOTE;
@@ -1181,7 +1182,7 @@ void TdApi::OnRspQryForQuote(CThostFtdcForQuoteField *pForQuote, CThostFtdcRspIn
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryQuote(CThostFtdcQuoteField *pQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryQuote(CThostFtdcQuoteField *pQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYQUOTE;
@@ -1202,7 +1203,7 @@ void TdApi::OnRspQryQuote(CThostFtdcQuoteField *pQuote, CThostFtdcRspInfoField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryLock(CThostFtdcLockField *pLock, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryLock(CThostFtdcLockField *pLock, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOCK;
@@ -1223,7 +1224,7 @@ void TdApi::OnRspQryLock(CThostFtdcLockField *pLock, CThostFtdcRspInfoField *pRs
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryLockPosition(CThostFtdcLockPositionField *pLockPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryLockPosition(CThostFtdcLockPositionField *pLockPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYLOCKPOSITION;
@@ -1244,7 +1245,7 @@ void TdApi::OnRspQryLockPosition(CThostFtdcLockPositionField *pLockPosition, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryETFOptionInstrCommRate(CThostFtdcETFOptionInstrCommRateField *pETFOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryETFOptionInstrCommRate(CThostFtdcETFOptionInstrCommRateField *pETFOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYETFOPTIONINSTRCOMMRATE;
@@ -1265,7 +1266,28 @@ void TdApi::OnRspQryETFOptionInstrCommRate(CThostFtdcETFOptionInstrCommRateField
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryInvestorLevel(CThostFtdcInvestorLevelField *pInvestorLevel, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryLimitPosi(CThostFtdcLimitPosiField *pLimitPosi, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYLIMITPOSI;
+	if (pLimitPosi)
+	{
+		CThostFtdcLimitPosiField *task_data = new CThostFtdcLimitPosiField();
+		*task_data = *pLimitPosi;
+		task.task_data = task_data;
+	}
+	if (pRspInfo)
+	{
+		CThostFtdcRspInfoField *task_error = new CThostFtdcRspInfoField();
+		*task_error = *pRspInfo;
+		task.task_error = task_error;
+	}
+	task.task_id = nRequestID;
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void TdApi::OnRspQryInvestorLevel(CThostFtdcInvestorLevelField *pInvestorLevel, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYINVESTORLEVEL;
@@ -1286,7 +1308,7 @@ void TdApi::OnRspQryInvestorLevel(CThostFtdcInvestorLevelField *pInvestorLevel, 
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExecFreeze(CThostFtdcExecFreezeField *pExecFreeze, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExecFreeze(CThostFtdcExecFreezeField *pExecFreeze, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXECFREEZE;
@@ -1307,7 +1329,28 @@ void TdApi::OnRspQryExecFreeze(CThostFtdcExecFreezeField *pExecFreeze, CThostFtd
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *pCombInstrumentGuard, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryLimitAmount(CThostFtdcLimitAmountField *pLimitAmount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYLIMITAMOUNT;
+	if (pLimitAmount)
+	{
+		CThostFtdcLimitAmountField *task_data = new CThostFtdcLimitAmountField();
+		*task_data = *pLimitAmount;
+		task.task_data = task_data;
+	}
+	if (pRspInfo)
+	{
+		CThostFtdcRspInfoField *task_error = new CThostFtdcRspInfoField();
+		*task_error = *pRspInfo;
+		task.task_error = task_error;
+	}
+	task.task_id = nRequestID;
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void TdApi::OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *pCombInstrumentGuard, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBINSTRUMENTGUARD;
@@ -1328,7 +1371,7 @@ void TdApi::OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *pCom
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryCombAction(CThostFtdcCombActionField *pCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryCombAction(CThostFtdcCombActionField *pCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCOMBACTION;
@@ -1349,7 +1392,7 @@ void TdApi::OnRspQryCombAction(CThostFtdcCombActionField *pCombAction, CThostFtd
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTransferSerial(CThostFtdcTransferSerialField *pTransferSerial, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTransferSerial(CThostFtdcTransferSerialField *pTransferSerial, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRANSFERSERIAL;
@@ -1370,7 +1413,7 @@ void TdApi::OnRspQryTransferSerial(CThostFtdcTransferSerialField *pTransferSeria
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryAccountregister(CThostFtdcAccountregisterField *pAccountregister, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryAccountregister(CThostFtdcAccountregisterField *pAccountregister, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYACCOUNTREGISTER;
@@ -1391,7 +1434,7 @@ void TdApi::OnRspQryAccountregister(CThostFtdcAccountregisterField *pAccountregi
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPERROR;
@@ -1406,7 +1449,7 @@ void TdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnOrder(CThostFtdcOrderField *pOrder)
+void TdApi::OnRtnOrder(CThostFtdcOrderField *pOrder) 
 {
 	Task task = Task();
 	task.task_name = ONRTNORDER;
@@ -1419,7 +1462,7 @@ void TdApi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnTrade(CThostFtdcTradeField *pTrade)
+void TdApi::OnRtnTrade(CThostFtdcTradeField *pTrade) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADE;
@@ -1432,7 +1475,7 @@ void TdApi::OnRtnTrade(CThostFtdcTradeField *pTrade)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERINSERT;
@@ -1451,7 +1494,7 @@ void TdApi::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFt
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNORDERACTION;
@@ -1470,7 +1513,7 @@ void TdApi::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThost
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnInstrumentStatus(CThostFtdcInstrumentStatusField *pInstrumentStatus)
+void TdApi::OnRtnInstrumentStatus(CThostFtdcInstrumentStatusField *pInstrumentStatus) 
 {
 	Task task = Task();
 	task.task_name = ONRTNINSTRUMENTSTATUS;
@@ -1483,7 +1526,7 @@ void TdApi::OnRtnInstrumentStatus(CThostFtdcInstrumentStatusField *pInstrumentSt
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnBulletin(CThostFtdcBulletinField *pBulletin)
+void TdApi::OnRtnBulletin(CThostFtdcBulletinField *pBulletin) 
 {
 	Task task = Task();
 	task.task_name = ONRTNBULLETIN;
@@ -1496,7 +1539,7 @@ void TdApi::OnRtnBulletin(CThostFtdcBulletinField *pBulletin)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *pTradingNoticeInfo)
+void TdApi::OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *pTradingNoticeInfo) 
 {
 	Task task = Task();
 	task.task_name = ONRTNTRADINGNOTICE;
@@ -1509,7 +1552,7 @@ void TdApi::OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *pTradingNoticeI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *pErrorConditionalOrder)
+void TdApi::OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *pErrorConditionalOrder) 
 {
 	Task task = Task();
 	task.task_name = ONRTNERRORCONDITIONALORDER;
@@ -1522,7 +1565,7 @@ void TdApi::OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *pEr
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnExecOrder(CThostFtdcExecOrderField *pExecOrder)
+void TdApi::OnRtnExecOrder(CThostFtdcExecOrderField *pExecOrder) 
 {
 	Task task = Task();
 	task.task_name = ONRTNEXECORDER;
@@ -1535,7 +1578,7 @@ void TdApi::OnRtnExecOrder(CThostFtdcExecOrderField *pExecOrder)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXECORDERINSERT;
@@ -1554,7 +1597,7 @@ void TdApi::OnErrRtnExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrd
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnExecOrderAction(CThostFtdcExecOrderActionField *pExecOrderAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnExecOrderAction(CThostFtdcExecOrderActionField *pExecOrderAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXECORDERACTION;
@@ -1573,7 +1616,7 @@ void TdApi::OnErrRtnExecOrderAction(CThostFtdcExecOrderActionField *pExecOrderAc
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNFORQUOTEINSERT;
@@ -1592,7 +1635,7 @@ void TdApi::OnErrRtnForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote,
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnQuote(CThostFtdcQuoteField *pQuote)
+void TdApi::OnRtnQuote(CThostFtdcQuoteField *pQuote) 
 {
 	Task task = Task();
 	task.task_name = ONRTNQUOTE;
@@ -1605,7 +1648,7 @@ void TdApi::OnRtnQuote(CThostFtdcQuoteField *pQuote)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNQUOTEINSERT;
@@ -1624,7 +1667,7 @@ void TdApi::OnErrRtnQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFt
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnQuoteAction(CThostFtdcQuoteActionField *pQuoteAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnQuoteAction(CThostFtdcQuoteActionField *pQuoteAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNQUOTEACTION;
@@ -1643,7 +1686,7 @@ void TdApi::OnErrRtnQuoteAction(CThostFtdcQuoteActionField *pQuoteAction, CThost
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
+void TdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFORQUOTERSP;
@@ -1656,7 +1699,7 @@ void TdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenField *pCFMMCTradingAccountToken)
+void TdApi::OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenField *pCFMMCTradingAccountToken) 
 {
 	Task task = Task();
 	task.task_name = ONRTNCFMMCTRADINGACCOUNTTOKEN;
@@ -1669,7 +1712,7 @@ void TdApi::OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenFiel
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnLock(CThostFtdcLockField *pLock)
+void TdApi::OnRtnLock(CThostFtdcLockField *pLock) 
 {
 	Task task = Task();
 	task.task_name = ONRTNLOCK;
@@ -1682,7 +1725,7 @@ void TdApi::OnRtnLock(CThostFtdcLockField *pLock)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNLOCKINSERT;
@@ -1701,7 +1744,7 @@ void TdApi::OnErrRtnLockInsert(CThostFtdcInputLockField *pInputLock, CThostFtdcR
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionField *pBatchOrderAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionField *pBatchOrderAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNBATCHORDERACTION;
@@ -1720,7 +1763,7 @@ void TdApi::OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionField *pBatchOrde
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnCombAction(CThostFtdcCombActionField *pCombAction)
+void TdApi::OnRtnCombAction(CThostFtdcCombActionField *pCombAction) 
 {
 	Task task = Task();
 	task.task_name = ONRTNCOMBACTION;
@@ -1733,7 +1776,7 @@ void TdApi::OnRtnCombAction(CThostFtdcCombActionField *pCombAction)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNCOMBACTIONINSERT;
@@ -1752,7 +1795,7 @@ void TdApi::OnErrRtnCombActionInsert(CThostFtdcInputCombActionField *pInputCombA
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryContractBank(CThostFtdcContractBankField *pContractBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryContractBank(CThostFtdcContractBankField *pContractBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYCONTRACTBANK;
@@ -1773,7 +1816,7 @@ void TdApi::OnRspQryContractBank(CThostFtdcContractBankField *pContractBank, CTh
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryParkedOrder(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryParkedOrder(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPARKEDORDER;
@@ -1794,7 +1837,7 @@ void TdApi::OnRspQryParkedOrder(CThostFtdcParkedOrderField *pParkedOrder, CThost
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYPARKEDORDERACTION;
@@ -1815,7 +1858,7 @@ void TdApi::OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedO
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryTradingNotice(CThostFtdcTradingNoticeField *pTradingNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryTradingNotice(CThostFtdcTradingNoticeField *pTradingNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYTRADINGNOTICE;
@@ -1836,7 +1879,7 @@ void TdApi::OnRspQryTradingNotice(CThostFtdcTradingNoticeField *pTradingNotice, 
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryBrokerTradingParams(CThostFtdcBrokerTradingParamsField *pBrokerTradingParams, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryBrokerTradingParams(CThostFtdcBrokerTradingParamsField *pBrokerTradingParams, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYBROKERTRADINGPARAMS;
@@ -1857,7 +1900,7 @@ void TdApi::OnRspQryBrokerTradingParams(CThostFtdcBrokerTradingParamsField *pBro
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosField *pBrokerTradingAlgos, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosField *pBrokerTradingAlgos, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYBROKERTRADINGALGOS;
@@ -1878,7 +1921,7 @@ void TdApi::OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosField *pBroke
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenField *pQueryCFMMCTradingAccountToken, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenField *pQueryCFMMCTradingAccountToken, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQUERYCFMMCTRADINGACCOUNTTOKEN;
@@ -1899,7 +1942,7 @@ void TdApi::OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccoun
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnFromBankToFutureByBank(CThostFtdcRspTransferField *pRspTransfer)
+void TdApi::OnRtnFromBankToFutureByBank(CThostFtdcRspTransferField *pRspTransfer) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFROMBANKTOFUTUREBYBANK;
@@ -1912,7 +1955,7 @@ void TdApi::OnRtnFromBankToFutureByBank(CThostFtdcRspTransferField *pRspTransfer
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnFromFutureToBankByBank(CThostFtdcRspTransferField *pRspTransfer)
+void TdApi::OnRtnFromFutureToBankByBank(CThostFtdcRspTransferField *pRspTransfer) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFROMFUTURETOBANKBYBANK;
@@ -1925,7 +1968,7 @@ void TdApi::OnRtnFromFutureToBankByBank(CThostFtdcRspTransferField *pRspTransfer
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromBankToFutureByBank(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromBankToFutureByBank(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMBANKTOFUTUREBYBANK;
@@ -1938,7 +1981,7 @@ void TdApi::OnRtnRepealFromBankToFutureByBank(CThostFtdcRspRepealField *pRspRepe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromFutureToBankByBank(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromFutureToBankByBank(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMFUTURETOBANKBYBANK;
@@ -1951,7 +1994,7 @@ void TdApi::OnRtnRepealFromFutureToBankByBank(CThostFtdcRspRepealField *pRspRepe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *pRspTransfer)
+void TdApi::OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *pRspTransfer) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFROMBANKTOFUTUREBYFUTURE;
@@ -1964,7 +2007,7 @@ void TdApi::OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *pRspTransf
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferField *pRspTransfer)
+void TdApi::OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferField *pRspTransfer) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFROMFUTURETOBANKBYFUTURE;
@@ -1977,7 +2020,7 @@ void TdApi::OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferField *pRspTransf
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromBankToFutureByFutureManual(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromBankToFutureByFutureManual(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMBANKTOFUTUREBYFUTUREMANUAL;
@@ -1990,7 +2033,7 @@ void TdApi::OnRtnRepealFromBankToFutureByFutureManual(CThostFtdcRspRepealField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromFutureToBankByFutureManual(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromFutureToBankByFutureManual(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMFUTURETOBANKBYFUTUREMANUAL;
@@ -2003,7 +2046,7 @@ void TdApi::OnRtnRepealFromFutureToBankByFutureManual(CThostFtdcRspRepealField *
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountField *pNotifyQueryAccount)
+void TdApi::OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountField *pNotifyQueryAccount) 
 {
 	Task task = Task();
 	task.task_name = ONRTNQUERYBANKBALANCEBYFUTURE;
@@ -2016,7 +2059,7 @@ void TdApi::OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountField *pNo
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNBANKTOFUTUREBYFUTURE;
@@ -2035,7 +2078,7 @@ void TdApi::OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNFUTURETOBANKBYFUTURE;
@@ -2054,7 +2097,7 @@ void TdApi::OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNREPEALBANKTOFUTUREBYFUTUREMANUAL;
@@ -2073,7 +2116,7 @@ void TdApi::OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealField *p
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNREPEALFUTURETOBANKBYFUTUREMANUAL;
@@ -2092,7 +2135,7 @@ void TdApi::OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealField *p
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnQueryBankBalanceByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnQueryBankBalanceByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNQUERYBANKBALANCEBYFUTURE;
@@ -2111,7 +2154,7 @@ void TdApi::OnErrRtnQueryBankBalanceByFuture(CThostFtdcReqQueryAccountField *pRe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMBANKTOFUTUREBYFUTURE;
@@ -2124,7 +2167,7 @@ void TdApi::OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealField *pRspRe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealField *pRspRepeal)
+void TdApi::OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealField *pRspRepeal) 
 {
 	Task task = Task();
 	task.task_name = ONRTNREPEALFROMFUTURETOBANKBYFUTURE;
@@ -2137,7 +2180,7 @@ void TdApi::OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealField *pRspRe
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspFromBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspFromBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPFROMBANKTOFUTUREBYFUTURE;
@@ -2158,7 +2201,7 @@ void TdApi::OnRspFromBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransf
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspFromFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspFromFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPFROMFUTURETOBANKBYFUTURE;
@@ -2179,7 +2222,7 @@ void TdApi::OnRspFromFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransf
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQUERYBANKACCOUNTMONEYBYFUTURE;
@@ -2200,7 +2243,7 @@ void TdApi::OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField *p
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnOpenAccountByBank(CThostFtdcOpenAccountField *pOpenAccount)
+void TdApi::OnRtnOpenAccountByBank(CThostFtdcOpenAccountField *pOpenAccount) 
 {
 	Task task = Task();
 	task.task_name = ONRTNOPENACCOUNTBYBANK;
@@ -2213,7 +2256,7 @@ void TdApi::OnRtnOpenAccountByBank(CThostFtdcOpenAccountField *pOpenAccount)
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnCancelAccountByBank(CThostFtdcCancelAccountField *pCancelAccount)
+void TdApi::OnRtnCancelAccountByBank(CThostFtdcCancelAccountField *pCancelAccount) 
 {
 	Task task = Task();
 	task.task_name = ONRTNCANCELACCOUNTBYBANK;
@@ -2226,7 +2269,7 @@ void TdApi::OnRtnCancelAccountByBank(CThostFtdcCancelAccountField *pCancelAccoun
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnChangeAccountByBank(CThostFtdcChangeAccountField *pChangeAccount)
+void TdApi::OnRtnChangeAccountByBank(CThostFtdcChangeAccountField *pChangeAccount) 
 {
 	Task task = Task();
 	task.task_name = ONRTNCHANGEACCOUNTBYBANK;
@@ -2239,7 +2282,7 @@ void TdApi::OnRtnChangeAccountByBank(CThostFtdcChangeAccountField *pChangeAccoun
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnResOpenAccConfirmTpdByBank(CThostFtdcResOpenAccConfirmTpdField *pResOpenAccConfirmTpd)
+void TdApi::OnRtnResOpenAccConfirmTpdByBank(CThostFtdcResOpenAccConfirmTpdField *pResOpenAccConfirmTpd) 
 {
 	Task task = Task();
 	task.task_name = ONRTNRESOPENACCCONFIRMTPDBYBANK;
@@ -2252,7 +2295,7 @@ void TdApi::OnRtnResOpenAccConfirmTpdByBank(CThostFtdcResOpenAccConfirmTpdField 
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspReserveOpenAccountTpdByFuture(CThostFtdcReqReserveOpenAccountTpdField *pReqReserveOpenAccountTpd, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspReserveOpenAccountTpdByFuture(CThostFtdcReqReserveOpenAccountTpdField *pReqReserveOpenAccountTpd, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPRESERVEOPENACCOUNTTPDBYFUTURE;
@@ -2273,7 +2316,7 @@ void TdApi::OnRspReserveOpenAccountTpdByFuture(CThostFtdcReqReserveOpenAccountTp
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspSecuritiesDepositInterestByFuture(CThostFtdcReqSecuritiesDepositInterestField *pReqSecuritiesDepositInterest, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspSecuritiesDepositInterestByFuture(CThostFtdcReqSecuritiesDepositInterestField *pReqSecuritiesDepositInterest, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSECURITIESDEPOSITINTERESTBYFUTURE;
@@ -2294,7 +2337,7 @@ void TdApi::OnRspSecuritiesDepositInterestByFuture(CThostFtdcReqSecuritiesDeposi
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspDayEndFileReadyByFuture(CThostFtdcReqDayEndFileReadyField *pReqDayEndFileReady, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspDayEndFileReadyByFuture(CThostFtdcReqDayEndFileReadyField *pReqDayEndFileReady, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPDAYENDFILEREADYBYFUTURE;
@@ -2315,7 +2358,7 @@ void TdApi::OnRspDayEndFileReadyByFuture(CThostFtdcReqDayEndFileReadyField *pReq
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField *pInputExecCombineOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField *pInputExecCombineOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPEXECCOMBINEORDERINSERT;
@@ -2336,7 +2379,7 @@ void TdApi::OnRspExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField *pI
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspExecCombineOrderAction(CThostFtdcInputExecCombineOrderActionField *pInputExecCombineOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspExecCombineOrderAction(CThostFtdcInputExecCombineOrderActionField *pInputExecCombineOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPEXECCOMBINEORDERACTION;
@@ -2357,7 +2400,7 @@ void TdApi::OnRspExecCombineOrderAction(CThostFtdcInputExecCombineOrderActionFie
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRspQryExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void TdApi::OnRspQryExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPQRYEXECCOMBINEORDER;
@@ -2378,7 +2421,7 @@ void TdApi::OnRspQryExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombi
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnExecCombineOrderAction(CThostFtdcExecCombineOrderActionField *pExecCombineOrderAction, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnExecCombineOrderAction(CThostFtdcExecCombineOrderActionField *pExecCombineOrderAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXECCOMBINEORDERACTION;
@@ -2397,7 +2440,7 @@ void TdApi::OnErrRtnExecCombineOrderAction(CThostFtdcExecCombineOrderActionField
 	this->task_queue.push(task);
 };
 
-void TdApi::OnErrRtnExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField *pInputExecCombineOrder, CThostFtdcRspInfoField *pRspInfo)
+void TdApi::OnErrRtnExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField *pInputExecCombineOrder, CThostFtdcRspInfoField *pRspInfo) 
 {
 	Task task = Task();
 	task.task_name = ONERRRTNEXECCOMBINEORDERINSERT;
@@ -2416,7 +2459,7 @@ void TdApi::OnErrRtnExecCombineOrderInsert(CThostFtdcInputExecCombineOrderField 
 	this->task_queue.push(task);
 };
 
-void TdApi::OnRtnExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineOrder)
+void TdApi::OnRtnExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineOrder) 
 {
 	Task task = Task();
 	task.task_name = ONRTNEXECCOMBINEORDER;
@@ -2429,9 +2472,917 @@ void TdApi::OnRtnExecCombineOrder(CThostFtdcExecCombineOrderField *pExecCombineO
 	this->task_queue.push(task);
 };
 
-///////////////////////////////////////////////////////////////////////////
-/////////////process
-///////////////////////////////////////////////////////////////////////////
+void TdApi::OnRspInternalTransfer(CThostFtdcInputInternalTransferField *pInputInternalTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
+{
+	Task task = Task();
+	task.task_name = ONRSPINTERNALTRANSFER;
+	if (pInputInternalTransfer)
+	{
+		CThostFtdcInputInternalTransferField *task_data = new CThostFtdcInputInternalTransferField();
+		*task_data = *pInputInternalTransfer;
+		task.task_data = task_data;
+	}
+	if (pRspInfo)
+	{
+		CThostFtdcRspInfoField *task_error = new CThostFtdcRspInfoField();
+		*task_error = *pRspInfo;
+		task.task_error = task_error;
+	}
+	task.task_id = nRequestID;
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void TdApi::OnRtnInternalTransfer(CThostFtdcRtnInternalTransferField *pRtnInternalTransfer) 
+{
+	Task task = Task();
+	task.task_name = ONRTNINTERNALTRANSFER;
+	if (pRtnInternalTransfer)
+	{
+		CThostFtdcRtnInternalTransferField *task_data = new CThostFtdcRtnInternalTransferField();
+		*task_data = *pRtnInternalTransfer;
+		task.task_data = task_data;
+	}
+	this->task_queue.push(task);
+};
+
+void TdApi::OnRspQryInternalTransfer(CThostFtdcInternalTransferField *pInternalTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYINTERNALTRANSFER;
+	if (pInternalTransfer)
+	{
+		CThostFtdcInternalTransferField *task_data = new CThostFtdcInternalTransferField();
+		*task_data = *pInternalTransfer;
+		task.task_data = task_data;
+	}
+	if (pRspInfo)
+	{
+		CThostFtdcRspInfoField *task_error = new CThostFtdcRspInfoField();
+		*task_error = *pRspInfo;
+		task.task_error = task_error;
+	}
+	task.task_id = nRequestID;
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+void TdApi::OnRspQryFutureTradingAccount(CThostFtdcNtfQryFutureTradingAccountField *pNtfQryFutureTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
+{
+	Task task = Task();
+	task.task_name = ONRSPQRYFUTURETRADINGACCOUNT;
+	if (pNtfQryFutureTradingAccount)
+	{
+		CThostFtdcNtfQryFutureTradingAccountField *task_data = new CThostFtdcNtfQryFutureTradingAccountField();
+		*task_data = *pNtfQryFutureTradingAccount;
+		task.task_data = task_data;
+	}
+	if (pRspInfo)
+	{
+		CThostFtdcRspInfoField *task_error = new CThostFtdcRspInfoField();
+		*task_error = *pRspInfo;
+		task.task_error = task_error;
+	}
+	task.task_id = nRequestID;
+	task.task_last = bIsLast;
+	this->task_queue.push(task);
+};
+
+///-------------------------------------------------------------------------------------
+///¹¤×÷Ïß³Ì´Ó¶ÓÁÐÖÐÈ¡³öÊý¾Ý£¬×ª»¯Îªpython¶ÔÏóºó£¬½øÐÐÍÆËÍ
+///-------------------------------------------------------------------------------------
+
+void TdApi::processTask()
+{
+	try
+	{
+		while (this->active) {
+			Task task = this->task_queue.pop();
+
+			switch (task.task_name) 
+			{
+			case ONFRONTCONNECTED:
+			{
+				this->processFrontConnected(&task);
+				break;
+			}
+
+			case ONFRONTDISCONNECTED:
+			{
+				this->processFrontDisconnected(&task);
+				break;
+			}
+
+			case ONHEARTBEATWARNING:
+			{
+				this->processHeartBeatWarning(&task);
+				break;
+			}
+
+			case ONRSPAUTHENTICATE:
+			{
+				this->processRspAuthenticate(&task);
+				break;
+			}
+
+			case ONRSPUSERLOGIN:
+			{
+				this->processRspUserLogin(&task);
+				break;
+			}
+
+			case ONRSPUSERLOGOUT:
+			{
+				this->processRspUserLogout(&task);
+				break;
+			}
+
+			case ONRSPUSERPASSWORDUPDATE:
+			{
+				this->processRspUserPasswordUpdate(&task);
+				break;
+			}
+
+			case ONRSPTRADINGACCOUNTPASSWORDUPDATE:
+			{
+				this->processRspTradingAccountPasswordUpdate(&task);
+				break;
+			}
+
+			case ONRSPORDERINSERT:
+			{
+				this->processRspOrderInsert(&task);
+				break;
+			}
+
+			case ONRSPPARKEDORDERINSERT:
+			{
+				this->processRspParkedOrderInsert(&task);
+				break;
+			}
+
+			case ONRSPPARKEDORDERACTION:
+			{
+				this->processRspParkedOrderAction(&task);
+				break;
+			}
+
+			case ONRSPORDERACTION:
+			{
+				this->processRspOrderAction(&task);
+				break;
+			}
+
+			case ONRSPQUERYMAXORDERVOLUME:
+			{
+				this->processRspQueryMaxOrderVolume(&task);
+				break;
+			}
+
+			case ONRSPSETTLEMENTINFOCONFIRM:
+			{
+				this->processRspSettlementInfoConfirm(&task);
+				break;
+			}
+
+			case ONRSPREMOVEPARKEDORDER:
+			{
+				this->processRspRemoveParkedOrder(&task);
+				break;
+			}
+
+			case ONRSPREMOVEPARKEDORDERACTION:
+			{
+				this->processRspRemoveParkedOrderAction(&task);
+				break;
+			}
+
+			case ONRSPEXECORDERINSERT:
+			{
+				this->processRspExecOrderInsert(&task);
+				break;
+			}
+
+			case ONRSPEXECORDERACTION:
+			{
+				this->processRspExecOrderAction(&task);
+				break;
+			}
+
+			case ONRSPFORQUOTEINSERT:
+			{
+				this->processRspForQuoteInsert(&task);
+				break;
+			}
+
+			case ONRSPQUOTEINSERT:
+			{
+				this->processRspQuoteInsert(&task);
+				break;
+			}
+
+			case ONRSPQUOTEACTION:
+			{
+				this->processRspQuoteAction(&task);
+				break;
+			}
+
+			case ONRSPLOCKINSERT:
+			{
+				this->processRspLockInsert(&task);
+				break;
+			}
+
+			case ONRSPBATCHORDERACTION:
+			{
+				this->processRspBatchOrderAction(&task);
+				break;
+			}
+
+			case ONRSPCOMBACTIONINSERT:
+			{
+				this->processRspCombActionInsert(&task);
+				break;
+			}
+
+			case ONRSPQRYORDER:
+			{
+				this->processRspQryOrder(&task);
+				break;
+			}
+
+			case ONRSPQRYTRADE:
+			{
+				this->processRspQryTrade(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTORPOSITION:
+			{
+				this->processRspQryInvestorPosition(&task);
+				break;
+			}
+
+			case ONRSPQRYTRADINGACCOUNT:
+			{
+				this->processRspQryTradingAccount(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTOR:
+			{
+				this->processRspQryInvestor(&task);
+				break;
+			}
+
+			case ONRSPQRYTRADINGCODE:
+			{
+				this->processRspQryTradingCode(&task);
+				break;
+			}
+
+			case ONRSPQRYINSTRUMENTMARGINRATE:
+			{
+				this->processRspQryInstrumentMarginRate(&task);
+				break;
+			}
+
+			case ONRSPQRYINSTRUMENTCOMMISSIONRATE:
+			{
+				this->processRspQryInstrumentCommissionRate(&task);
+				break;
+			}
+
+			case ONRSPQRYEXCHANGE:
+			{
+				this->processRspQryExchange(&task);
+				break;
+			}
+
+			case ONRSPQRYPRODUCT:
+			{
+				this->processRspQryProduct(&task);
+				break;
+			}
+
+			case ONRSPQRYINSTRUMENT:
+			{
+				this->processRspQryInstrument(&task);
+				break;
+			}
+
+			case ONRSPQRYDEPTHMARKETDATA:
+			{
+				this->processRspQryDepthMarketData(&task);
+				break;
+			}
+
+			case ONRSPQRYSETTLEMENTINFO:
+			{
+				this->processRspQrySettlementInfo(&task);
+				break;
+			}
+
+			case ONRSPQRYTRANSFERBANK:
+			{
+				this->processRspQryTransferBank(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTORPOSITIONDETAIL:
+			{
+				this->processRspQryInvestorPositionDetail(&task);
+				break;
+			}
+
+			case ONRSPQRYNOTICE:
+			{
+				this->processRspQryNotice(&task);
+				break;
+			}
+
+			case ONRSPQRYSETTLEMENTINFOCONFIRM:
+			{
+				this->processRspQrySettlementInfoConfirm(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTORPOSITIONCOMBINEDETAIL:
+			{
+				this->processRspQryInvestorPositionCombineDetail(&task);
+				break;
+			}
+
+			case ONRSPQRYCFMMCTRADINGACCOUNTKEY:
+			{
+				this->processRspQryCFMMCTradingAccountKey(&task);
+				break;
+			}
+
+			case ONRSPQRYEWARRANTOFFSET:
+			{
+				this->processRspQryEWarrantOffset(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTORPRODUCTGROUPMARGIN:
+			{
+				this->processRspQryInvestorProductGroupMargin(&task);
+				break;
+			}
+
+			case ONRSPQRYEXCHANGEMARGINRATE:
+			{
+				this->processRspQryExchangeMarginRate(&task);
+				break;
+			}
+
+			case ONRSPQRYEXCHANGEMARGINRATEADJUST:
+			{
+				this->processRspQryExchangeMarginRateAdjust(&task);
+				break;
+			}
+
+			case ONRSPQRYEXCHANGERATE:
+			{
+				this->processRspQryExchangeRate(&task);
+				break;
+			}
+
+			case ONRSPQRYSECAGENTACIDMAP:
+			{
+				this->processRspQrySecAgentACIDMap(&task);
+				break;
+			}
+
+			case ONRSPQRYPRODUCTEXCHRATE:
+			{
+				this->processRspQryProductExchRate(&task);
+				break;
+			}
+
+			case ONRSPQRYPRODUCTGROUP:
+			{
+				this->processRspQryProductGroup(&task);
+				break;
+			}
+
+			case ONRSPQRYMMINSTRUMENTCOMMISSIONRATE:
+			{
+				this->processRspQryMMInstrumentCommissionRate(&task);
+				break;
+			}
+
+			case ONRSPQRYMMOPTIONINSTRCOMMRATE:
+			{
+				this->processRspQryMMOptionInstrCommRate(&task);
+				break;
+			}
+
+			case ONRSPQRYINSTRUMENTORDERCOMMRATE:
+			{
+				this->processRspQryInstrumentOrderCommRate(&task);
+				break;
+			}
+
+			case ONRSPQRYOPTIONINSTRTRADECOST:
+			{
+				this->processRspQryOptionInstrTradeCost(&task);
+				break;
+			}
+
+			case ONRSPQRYOPTIONINSTRCOMMRATE:
+			{
+				this->processRspQryOptionInstrCommRate(&task);
+				break;
+			}
+
+			case ONRSPQRYEXECORDER:
+			{
+				this->processRspQryExecOrder(&task);
+				break;
+			}
+
+			case ONRSPQRYFORQUOTE:
+			{
+				this->processRspQryForQuote(&task);
+				break;
+			}
+
+			case ONRSPQRYQUOTE:
+			{
+				this->processRspQryQuote(&task);
+				break;
+			}
+
+			case ONRSPQRYLOCK:
+			{
+				this->processRspQryLock(&task);
+				break;
+			}
+
+			case ONRSPQRYLOCKPOSITION:
+			{
+				this->processRspQryLockPosition(&task);
+				break;
+			}
+
+			case ONRSPQRYETFOPTIONINSTRCOMMRATE:
+			{
+				this->processRspQryETFOptionInstrCommRate(&task);
+				break;
+			}
+
+			case ONRSPQRYLIMITPOSI:
+			{
+				this->processRspQryLimitPosi(&task);
+				break;
+			}
+
+			case ONRSPQRYINVESTORLEVEL:
+			{
+				this->processRspQryInvestorLevel(&task);
+				break;
+			}
+
+			case ONRSPQRYEXECFREEZE:
+			{
+				this->processRspQryExecFreeze(&task);
+				break;
+			}
+
+			case ONRSPQRYLIMITAMOUNT:
+			{
+				this->processRspQryLimitAmount(&task);
+				break;
+			}
+
+			case ONRSPQRYCOMBINSTRUMENTGUARD:
+			{
+				this->processRspQryCombInstrumentGuard(&task);
+				break;
+			}
+
+			case ONRSPQRYCOMBACTION:
+			{
+				this->processRspQryCombAction(&task);
+				break;
+			}
+
+			case ONRSPQRYTRANSFERSERIAL:
+			{
+				this->processRspQryTransferSerial(&task);
+				break;
+			}
+
+			case ONRSPQRYACCOUNTREGISTER:
+			{
+				this->processRspQryAccountregister(&task);
+				break;
+			}
+
+			case ONRSPERROR:
+			{
+				this->processRspError(&task);
+				break;
+			}
+
+			case ONRTNORDER:
+			{
+				this->processRtnOrder(&task);
+				break;
+			}
+
+			case ONRTNTRADE:
+			{
+				this->processRtnTrade(&task);
+				break;
+			}
+
+			case ONERRRTNORDERINSERT:
+			{
+				this->processErrRtnOrderInsert(&task);
+				break;
+			}
+
+			case ONERRRTNORDERACTION:
+			{
+				this->processErrRtnOrderAction(&task);
+				break;
+			}
+
+			case ONRTNINSTRUMENTSTATUS:
+			{
+				this->processRtnInstrumentStatus(&task);
+				break;
+			}
+
+			case ONRTNBULLETIN:
+			{
+				this->processRtnBulletin(&task);
+				break;
+			}
+
+			case ONRTNTRADINGNOTICE:
+			{
+				this->processRtnTradingNotice(&task);
+				break;
+			}
+
+			case ONRTNERRORCONDITIONALORDER:
+			{
+				this->processRtnErrorConditionalOrder(&task);
+				break;
+			}
+
+			case ONRTNEXECORDER:
+			{
+				this->processRtnExecOrder(&task);
+				break;
+			}
+
+			case ONERRRTNEXECORDERINSERT:
+			{
+				this->processErrRtnExecOrderInsert(&task);
+				break;
+			}
+
+			case ONERRRTNEXECORDERACTION:
+			{
+				this->processErrRtnExecOrderAction(&task);
+				break;
+			}
+
+			case ONERRRTNFORQUOTEINSERT:
+			{
+				this->processErrRtnForQuoteInsert(&task);
+				break;
+			}
+
+			case ONRTNQUOTE:
+			{
+				this->processRtnQuote(&task);
+				break;
+			}
+
+			case ONERRRTNQUOTEINSERT:
+			{
+				this->processErrRtnQuoteInsert(&task);
+				break;
+			}
+
+			case ONERRRTNQUOTEACTION:
+			{
+				this->processErrRtnQuoteAction(&task);
+				break;
+			}
+
+			case ONRTNFORQUOTERSP:
+			{
+				this->processRtnForQuoteRsp(&task);
+				break;
+			}
+
+			case ONRTNCFMMCTRADINGACCOUNTTOKEN:
+			{
+				this->processRtnCFMMCTradingAccountToken(&task);
+				break;
+			}
+
+			case ONRTNLOCK:
+			{
+				this->processRtnLock(&task);
+				break;
+			}
+
+			case ONERRRTNLOCKINSERT:
+			{
+				this->processErrRtnLockInsert(&task);
+				break;
+			}
+
+			case ONERRRTNBATCHORDERACTION:
+			{
+				this->processErrRtnBatchOrderAction(&task);
+				break;
+			}
+
+			case ONRTNCOMBACTION:
+			{
+				this->processRtnCombAction(&task);
+				break;
+			}
+
+			case ONERRRTNCOMBACTIONINSERT:
+			{
+				this->processErrRtnCombActionInsert(&task);
+				break;
+			}
+
+			case ONRSPQRYCONTRACTBANK:
+			{
+				this->processRspQryContractBank(&task);
+				break;
+			}
+
+			case ONRSPQRYPARKEDORDER:
+			{
+				this->processRspQryParkedOrder(&task);
+				break;
+			}
+
+			case ONRSPQRYPARKEDORDERACTION:
+			{
+				this->processRspQryParkedOrderAction(&task);
+				break;
+			}
+
+			case ONRSPQRYTRADINGNOTICE:
+			{
+				this->processRspQryTradingNotice(&task);
+				break;
+			}
+
+			case ONRSPQRYBROKERTRADINGPARAMS:
+			{
+				this->processRspQryBrokerTradingParams(&task);
+				break;
+			}
+
+			case ONRSPQRYBROKERTRADINGALGOS:
+			{
+				this->processRspQryBrokerTradingAlgos(&task);
+				break;
+			}
+
+			case ONRSPQUERYCFMMCTRADINGACCOUNTTOKEN:
+			{
+				this->processRspQueryCFMMCTradingAccountToken(&task);
+				break;
+			}
+
+			case ONRTNFROMBANKTOFUTUREBYBANK:
+			{
+				this->processRtnFromBankToFutureByBank(&task);
+				break;
+			}
+
+			case ONRTNFROMFUTURETOBANKBYBANK:
+			{
+				this->processRtnFromFutureToBankByBank(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMBANKTOFUTUREBYBANK:
+			{
+				this->processRtnRepealFromBankToFutureByBank(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMFUTURETOBANKBYBANK:
+			{
+				this->processRtnRepealFromFutureToBankByBank(&task);
+				break;
+			}
+
+			case ONRTNFROMBANKTOFUTUREBYFUTURE:
+			{
+				this->processRtnFromBankToFutureByFuture(&task);
+				break;
+			}
+
+			case ONRTNFROMFUTURETOBANKBYFUTURE:
+			{
+				this->processRtnFromFutureToBankByFuture(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMBANKTOFUTUREBYFUTUREMANUAL:
+			{
+				this->processRtnRepealFromBankToFutureByFutureManual(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMFUTURETOBANKBYFUTUREMANUAL:
+			{
+				this->processRtnRepealFromFutureToBankByFutureManual(&task);
+				break;
+			}
+
+			case ONRTNQUERYBANKBALANCEBYFUTURE:
+			{
+				this->processRtnQueryBankBalanceByFuture(&task);
+				break;
+			}
+
+			case ONERRRTNBANKTOFUTUREBYFUTURE:
+			{
+				this->processErrRtnBankToFutureByFuture(&task);
+				break;
+			}
+
+			case ONERRRTNFUTURETOBANKBYFUTURE:
+			{
+				this->processErrRtnFutureToBankByFuture(&task);
+				break;
+			}
+
+			case ONERRRTNREPEALBANKTOFUTUREBYFUTUREMANUAL:
+			{
+				this->processErrRtnRepealBankToFutureByFutureManual(&task);
+				break;
+			}
+
+			case ONERRRTNREPEALFUTURETOBANKBYFUTUREMANUAL:
+			{
+				this->processErrRtnRepealFutureToBankByFutureManual(&task);
+				break;
+			}
+
+			case ONERRRTNQUERYBANKBALANCEBYFUTURE:
+			{
+				this->processErrRtnQueryBankBalanceByFuture(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMBANKTOFUTUREBYFUTURE:
+			{
+				this->processRtnRepealFromBankToFutureByFuture(&task);
+				break;
+			}
+
+			case ONRTNREPEALFROMFUTURETOBANKBYFUTURE:
+			{
+				this->processRtnRepealFromFutureToBankByFuture(&task);
+				break;
+			}
+
+			case ONRSPFROMBANKTOFUTUREBYFUTURE:
+			{
+				this->processRspFromBankToFutureByFuture(&task);
+				break;
+			}
+
+			case ONRSPFROMFUTURETOBANKBYFUTURE:
+			{
+				this->processRspFromFutureToBankByFuture(&task);
+				break;
+			}
+
+			case ONRSPQUERYBANKACCOUNTMONEYBYFUTURE:
+			{
+				this->processRspQueryBankAccountMoneyByFuture(&task);
+				break;
+			}
+
+			case ONRTNOPENACCOUNTBYBANK:
+			{
+				this->processRtnOpenAccountByBank(&task);
+				break;
+			}
+
+			case ONRTNCANCELACCOUNTBYBANK:
+			{
+				this->processRtnCancelAccountByBank(&task);
+				break;
+			}
+
+			case ONRTNCHANGEACCOUNTBYBANK:
+			{
+				this->processRtnChangeAccountByBank(&task);
+				break;
+			}
+
+			case ONRTNRESOPENACCCONFIRMTPDBYBANK:
+			{
+				this->processRtnResOpenAccConfirmTpdByBank(&task);
+				break;
+			}
+
+			case ONRSPRESERVEOPENACCOUNTTPDBYFUTURE:
+			{
+				this->processRspReserveOpenAccountTpdByFuture(&task);
+				break;
+			}
+
+			case ONRSPSECURITIESDEPOSITINTERESTBYFUTURE:
+			{
+				this->processRspSecuritiesDepositInterestByFuture(&task);
+				break;
+			}
+
+			case ONRSPDAYENDFILEREADYBYFUTURE:
+			{
+				this->processRspDayEndFileReadyByFuture(&task);
+				break;
+			}
+
+			case ONRSPEXECCOMBINEORDERINSERT:
+			{
+				this->processRspExecCombineOrderInsert(&task);
+				break;
+			}
+
+			case ONRSPEXECCOMBINEORDERACTION:
+			{
+				this->processRspExecCombineOrderAction(&task);
+				break;
+			}
+
+			case ONRSPQRYEXECCOMBINEORDER:
+			{
+				this->processRspQryExecCombineOrder(&task);
+				break;
+			}
+
+			case ONERRRTNEXECCOMBINEORDERACTION:
+			{
+				this->processErrRtnExecCombineOrderAction(&task);
+				break;
+			}
+
+			case ONERRRTNEXECCOMBINEORDERINSERT:
+			{
+				this->processErrRtnExecCombineOrderInsert(&task);
+				break;
+			}
+
+			case ONRTNEXECCOMBINEORDER:
+			{
+				this->processRtnExecCombineOrder(&task);
+				break;
+			}
+
+			case ONRSPINTERNALTRANSFER:
+			{
+				this->processRspInternalTransfer(&task);
+				break;
+			}
+
+			case ONRTNINTERNALTRANSFER:
+			{
+				this->processRtnInternalTransfer(&task);
+				break;
+			}
+
+			case ONRSPQRYINTERNALTRANSFER:
+			{
+				this->processRspQryInternalTransfer(&task);
+				break;
+			}
+
+			case ONRSPQRYFUTURETRADINGACCOUNT:
+			{
+				this->processRspQryFutureTradingAccount(&task);
+				break;
+			}
+			}
+		}
+	}
+	catch (const TerminatedError&) {
+	}
+};
+
 void TdApi::processFrontConnected(Task *task)
 {
 	gil_scoped_acquire acquire;
@@ -2615,8 +3566,10 @@ void TdApi::processRspOrderInsert(Task *task)
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2670,8 +3623,12 @@ void TdApi::processRspParkedOrderInsert(Task *task)
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2712,8 +3669,9 @@ void TdApi::processRspParkedOrderAction(Task *task)
 		data["ErrorID"] = task_data->ErrorID;
 		data["ErrorMsg"] = toUtf(task_data->ErrorMsg);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2749,8 +3707,11 @@ void TdApi::processRspOrderAction(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2894,8 +3855,9 @@ void TdApi::processRspExecOrderInsert(Task *task)
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2929,8 +3891,11 @@ void TdApi::processRspExecOrderAction(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -2958,8 +3923,11 @@ void TdApi::processRspForQuoteInsert(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["BranchID"] = toUtf(task_data->BranchID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3001,8 +3969,9 @@ void TdApi::processRspQuoteInsert(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3037,8 +4006,11 @@ void TdApi::processRspQuoteAction(Task *task)
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["AskVolume"] = task_data->AskVolume;
+		data["BidVolume"] = task_data->BidVolume;
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3069,8 +4041,9 @@ void TdApi::processRspLockInsert(Task *task)
 		data["BusinessUnit"] = toUtf(task_data->BusinessUnit);
 		data["LockType"] = task_data->LockType;
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3100,8 +4073,9 @@ void TdApi::processRspBatchOrderAction(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["UserID"] = toUtf(task_data->UserID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3132,9 +4106,11 @@ void TdApi::processRspCombActionInsert(Task *task)
 		data["CombDirection"] = task_data->CombDirection;
 		data["HedgeFlag"] = task_data->HedgeFlag;
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3216,8 +4192,12 @@ void TdApi::processRspQryOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -3269,6 +4249,9 @@ void TdApi::processRspQryTrade(Task *task)
 		data["BrokerOrderSeq"] = task_data->BrokerOrderSeq;
 		data["TradeSource"] = task_data->TradeSource;
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
 		delete task_data;
 	}
 	dict error;
@@ -3335,6 +4318,7 @@ void TdApi::processRspQryInvestorPosition(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["YdStrikeFrozen"] = task_data->YdStrikeFrozen;
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["OptionValue"] = task_data->OptionValue;
 		delete task_data;
 	}
 	dict error;
@@ -3404,6 +4388,7 @@ void TdApi::processRspQryTradingAccount(Task *task)
 		data["BizType"] = task_data->BizType;
 		data["FrozenSwap"] = task_data->FrozenSwap;
 		data["RemainSwap"] = task_data->RemainSwap;
+		data["OptionValue"] = task_data->OptionValue;
 		delete task_data;
 	}
 	dict error;
@@ -3613,7 +4598,7 @@ void TdApi::processRspQryInstrument(Task *task)
 		CThostFtdcInstrumentField *task_data = (CThostFtdcInstrumentField*)task->task_data;
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
-		data["InstrumentName"] = toUtf(task_data->InstrumentName);
+		data["OldInstrumentName"] = toUtf(task_data->OldInstrumentName);
 		data["ExchangeInstID"] = toUtf(task_data->ExchangeInstID);
 		data["ProductID"] = toUtf(task_data->ProductID);
 		data["ProductClass"] = task_data->ProductClass;
@@ -3645,6 +4630,7 @@ void TdApi::processRspQryInstrument(Task *task)
 		data["MinBuyVolume"] = task_data->MinBuyVolume;
 		data["MinSellVolume"] = task_data->MinSellVolume;
 		data["InstrumentCode"] = toUtf(task_data->InstrumentCode);
+		data["InstrumentName"] = toUtf(task_data->InstrumentName);
 		delete task_data;
 	}
 	dict error;
@@ -3709,6 +4695,9 @@ void TdApi::processRspQryDepthMarketData(Task *task)
 		data["AskVolume5"] = task_data->AskVolume5;
 		data["AveragePrice"] = task_data->AveragePrice;
 		data["ActionDay"] = toUtf(task_data->ActionDay);
+		data["CircuitRefPrice"] = task_data->CircuitRefPrice;
+		data["SendingTime"] = toUtf(task_data->SendingTime);
+		data["BigVolume"] = task_data->BigVolume;
 		delete task_data;
 	}
 	dict error;
@@ -3899,6 +4888,7 @@ void TdApi::processRspQryInvestorPositionCombineDetail(Task *task)
 		data["CombInstrumentID"] = toUtf(task_data->CombInstrumentID);
 		data["TradeGroupID"] = task_data->TradeGroupID;
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["CombCloseFrozen"] = task_data->CombCloseFrozen;
 		delete task_data;
 	}
 	dict error;
@@ -4382,8 +5372,11 @@ void TdApi::processRspQryExecOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -4425,9 +5418,11 @@ void TdApi::processRspQryForQuote(Task *task)
 		data["ActiveUserID"] = toUtf(task_data->ActiveUserID);
 		data["BrokerForQutoSeq"] = task_data->BrokerForQutoSeq;
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["BranchID"] = toUtf(task_data->BranchID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -4496,8 +5491,10 @@ void TdApi::processRspQryQuote(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -4552,8 +5549,10 @@ void TdApi::processRspQryLock(Task *task)
 		data["ActiveUserID"] = toUtf(task_data->ActiveUserID);
 		data["BrokerLockSeq"] = task_data->BrokerLockSeq;
 		data["BranchID"] = toUtf(task_data->BranchID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -4629,6 +5628,38 @@ void TdApi::processRspQryETFOptionInstrCommRate(Task *task)
 	this->onRspQryETFOptionInstrCommRate(data, error, task->task_id, task->task_last);
 };
 
+void TdApi::processRspQryLimitPosi(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CThostFtdcLimitPosiField *task_data = (CThostFtdcLimitPosiField*)task->task_data;
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["InstrumentID"] = toUtf(task_data->InstrumentID);
+		data["ExchangeID"] = toUtf(task_data->ExchangeID);
+		data["TotalVolume"] = task_data->TotalVolume;
+		data["LongVolume"] = task_data->LongVolume;
+		data["OpenVolume"] = task_data->OpenVolume;
+		data["LongAmount"] = task_data->LongAmount;
+		data["TotalVolumeFrozen"] = task_data->TotalVolumeFrozen;
+		data["LongVolumeFrozen"] = task_data->LongVolumeFrozen;
+		data["OpenVolumeFrozen"] = task_data->OpenVolumeFrozen;
+		data["LongAmountFrozen"] = task_data->LongAmountFrozen;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CThostFtdcRspInfoField *task_error = (CThostFtdcRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryLimitPosi(data, error, task->task_id, task->task_last);
+};
+
 void TdApi::processRspQryInvestorLevel(Task *task)
 {
 	gil_scoped_acquire acquire;
@@ -4679,6 +5710,31 @@ void TdApi::processRspQryExecFreeze(Task *task)
 		delete task_error;
 	}
 	this->onRspQryExecFreeze(data, error, task->task_id, task->task_last);
+};
+
+void TdApi::processRspQryLimitAmount(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CThostFtdcLimitAmountField *task_data = (CThostFtdcLimitAmountField*)task->task_data;
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["ExchangeID"] = toUtf(task_data->ExchangeID);
+		data["LongAmount"] = task_data->LongAmount;
+		data["LongAmountFrozen"] = task_data->LongAmountFrozen;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CThostFtdcRspInfoField *task_error = (CThostFtdcRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryLimitAmount(data, error, task->task_id, task->task_last);
 };
 
 void TdApi::processRspQryCombInstrumentGuard(Task *task)
@@ -4737,11 +5793,15 @@ void TdApi::processRspQryCombAction(Task *task)
 		data["SessionID"] = task_data->SessionID;
 		data["UserProductInfo"] = toUtf(task_data->UserProductInfo);
 		data["StatusMsg"] = toUtf(task_data->StatusMsg);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["ComTradeID"] = toUtf(task_data->ComTradeID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ActionTime"] = toUtf(task_data->ActionTime);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -4922,8 +5982,12 @@ void TdApi::processRtnOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnOrder(data);
@@ -4967,6 +6031,9 @@ void TdApi::processRtnTrade(Task *task)
 		data["BrokerOrderSeq"] = task_data->BrokerOrderSeq;
 		data["TradeSource"] = task_data->TradeSource;
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
 		delete task_data;
 	}
 	this->onRtnTrade(data);
@@ -5007,8 +6074,10 @@ void TdApi::processErrRtnOrderInsert(Task *task)
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5056,8 +6125,11 @@ void TdApi::processErrRtnOrderAction(Task *task)
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5204,8 +6276,12 @@ void TdApi::processRtnErrorConditionalOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnErrorConditionalOrder(data);
@@ -5260,8 +6336,11 @@ void TdApi::processRtnExecOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnExecOrder(data);
@@ -5293,8 +6372,9 @@ void TdApi::processErrRtnExecOrderInsert(Task *task)
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5341,8 +6421,11 @@ void TdApi::processErrRtnExecOrderAction(Task *task)
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5370,8 +6453,11 @@ void TdApi::processErrRtnForQuoteInsert(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["BranchID"] = toUtf(task_data->BranchID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5440,8 +6526,10 @@ void TdApi::processRtnQuote(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnQuote(data);
@@ -5475,8 +6563,9 @@ void TdApi::processErrRtnQuoteInsert(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5522,8 +6611,12 @@ void TdApi::processErrRtnQuoteAction(Task *task)
 		data["InstrumentID"] = toUtf(task_data->InstrumentID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["AskVolume"] = task_data->AskVolume;
+		data["BidVolume"] = task_data->BidVolume;
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5613,8 +6706,10 @@ void TdApi::processRtnLock(Task *task)
 		data["ActiveUserID"] = toUtf(task_data->ActiveUserID);
 		data["BrokerLockSeq"] = task_data->BrokerLockSeq;
 		data["BranchID"] = toUtf(task_data->BranchID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnLock(data);
@@ -5637,8 +6732,9 @@ void TdApi::processErrRtnLockInsert(Task *task)
 		data["BusinessUnit"] = toUtf(task_data->BusinessUnit);
 		data["LockType"] = task_data->LockType;
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5678,8 +6774,9 @@ void TdApi::processErrRtnBatchOrderAction(Task *task)
 		data["UserID"] = toUtf(task_data->UserID);
 		data["StatusMsg"] = toUtf(task_data->StatusMsg);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5725,11 +6822,15 @@ void TdApi::processRtnCombAction(Task *task)
 		data["SessionID"] = task_data->SessionID;
 		data["UserProductInfo"] = toUtf(task_data->UserProductInfo);
 		data["StatusMsg"] = toUtf(task_data->StatusMsg);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["ComTradeID"] = toUtf(task_data->ComTradeID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ActionTime"] = toUtf(task_data->ActionTime);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnCombAction(data);
@@ -5752,9 +6853,11 @@ void TdApi::processErrRtnCombActionInsert(Task *task)
 		data["CombDirection"] = task_data->CombDirection;
 		data["HedgeFlag"] = task_data->HedgeFlag;
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5832,8 +6935,12 @@ void TdApi::processRspQryParkedOrder(Task *task)
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
 		data["ClientID"] = toUtf(task_data->ClientID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["ComTradeID"] = toUtf(task_data->ComTradeID);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -5874,8 +6981,9 @@ void TdApi::processRspQryParkedOrderAction(Task *task)
 		data["ErrorID"] = task_data->ErrorID;
 		data["ErrorMsg"] = toUtf(task_data->ErrorMsg);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7589,8 +8697,9 @@ void TdApi::processRspExecCombineOrderInsert(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7623,8 +8732,9 @@ void TdApi::processRspExecCombineOrderAction(Task *task)
 		data["ActionFlag"] = task_data->ActionFlag;
 		data["UserID"] = toUtf(task_data->UserID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7659,7 +8769,7 @@ void TdApi::processRspQryExecCombineOrder(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["ParticipantID"] = toUtf(task_data->ParticipantID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["UnderlyingInstID"] = toUtf(task_data->UnderlyingInstID);
+		data["UnderlyingInstrID"] = toUtf(task_data->UnderlyingInstrID);
 		data["ExchangeCallInstID"] = toUtf(task_data->ExchangeCallInstID);
 		data["ExchangePutInstID"] = toUtf(task_data->ExchangePutInstID);
 		data["TraderID"] = toUtf(task_data->TraderID);
@@ -7685,8 +8795,11 @@ void TdApi::processRspQryExecCombineOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7734,8 +8847,11 @@ void TdApi::processErrRtnExecCombineOrderAction(Task *task)
 		data["PutInstrumentID"] = toUtf(task_data->PutInstrumentID);
 		data["BranchID"] = toUtf(task_data->BranchID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7769,8 +8885,9 @@ void TdApi::processErrRtnExecCombineOrderInsert(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	dict error;
@@ -7805,7 +8922,7 @@ void TdApi::processRtnExecCombineOrder(Task *task)
 		data["ExchangeID"] = toUtf(task_data->ExchangeID);
 		data["ParticipantID"] = toUtf(task_data->ParticipantID);
 		data["ClientID"] = toUtf(task_data->ClientID);
-		data["UnderlyingInstID"] = toUtf(task_data->UnderlyingInstID);
+		data["UnderlyingInstrID"] = toUtf(task_data->UnderlyingInstrID);
 		data["ExchangeCallInstID"] = toUtf(task_data->ExchangeCallInstID);
 		data["ExchangePutInstID"] = toUtf(task_data->ExchangePutInstID);
 		data["TraderID"] = toUtf(task_data->TraderID);
@@ -7831,813 +8948,168 @@ void TdApi::processRtnExecCombineOrder(Task *task)
 		data["InvestUnitID"] = toUtf(task_data->InvestUnitID);
 		data["AccountID"] = toUtf(task_data->AccountID);
 		data["CurrencyID"] = toUtf(task_data->CurrencyID);
-		data["IPAddress"] = toUtf(task_data->IPAddress);
+		data["reserve1"] = toUtf(task_data->reserve1);
 		data["MacAddress"] = toUtf(task_data->MacAddress);
+		data["OwnerType"] = toUtf(task_data->OwnerType);
+		data["LoginPBU"] = toUtf(task_data->LoginPBU);
+		data["IPAddress"] = toUtf(task_data->IPAddress);
 		delete task_data;
 	}
 	this->onRtnExecCombineOrder(data);
 };
 
-
-///////////////////////////////////////////////////////////////////////////
-/////////////å¤„ç†åˆ†å‘ä»»åŠ¡
-///////////////////////////////////////////////////////////////////////////
-void TdApi::processTask()
+void TdApi::processRspInternalTransfer(Task *task)
 {
-	try
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
 	{
-		while (this->active) {
-			Task task = this->task_queue.pop();
-			switch (task.task_name) {
-			case ONFRONTCONNECTED:
-			{
-				this->processFrontConnected(&task);
-				break;
-			}
-
-			case ONFRONTDISCONNECTED:
-			{
-				this->processFrontDisconnected(&task);
-				break;
-			}
-
-			case ONHEARTBEATWARNING:
-			{
-				this->processHeartBeatWarning(&task);
-				break;
-			}
-
-			case ONRSPAUTHENTICATE:
-			{
-				this->processRspAuthenticate(&task);
-				break;
-			}
-
-			case ONRSPUSERLOGIN:
-			{
-				this->processRspUserLogin(&task);
-				break;
-			}
-
-			case ONRSPUSERLOGOUT:
-			{
-				this->processRspUserLogout(&task);
-				break;
-			}
-
-			case ONRSPUSERPASSWORDUPDATE:
-			{
-				this->processRspUserPasswordUpdate(&task);
-				break;
-			}
-
-			case ONRSPTRADINGACCOUNTPASSWORDUPDATE:
-			{
-				this->processRspTradingAccountPasswordUpdate(&task);
-				break;
-			}
-
-			case ONRSPORDERINSERT:
-			{
-				this->processRspOrderInsert(&task);
-				break;
-			}
-
-			case ONRSPPARKEDORDERINSERT:
-			{
-				this->processRspParkedOrderInsert(&task);
-				break;
-			}
-
-			case ONRSPPARKEDORDERACTION:
-			{
-				this->processRspParkedOrderAction(&task);
-				break;
-			}
-
-			case ONRSPORDERACTION:
-			{
-				this->processRspOrderAction(&task);
-				break;
-			}
-
-			case ONRSPQUERYMAXORDERVOLUME:
-			{
-				this->processRspQueryMaxOrderVolume(&task);
-				break;
-			}
-
-			case ONRSPSETTLEMENTINFOCONFIRM:
-			{
-				this->processRspSettlementInfoConfirm(&task);
-				break;
-			}
-
-			case ONRSPREMOVEPARKEDORDER:
-			{
-				this->processRspRemoveParkedOrder(&task);
-				break;
-			}
-
-			case ONRSPREMOVEPARKEDORDERACTION:
-			{
-				this->processRspRemoveParkedOrderAction(&task);
-				break;
-			}
-
-			case ONRSPEXECORDERINSERT:
-			{
-				this->processRspExecOrderInsert(&task);
-				break;
-			}
-
-			case ONRSPEXECORDERACTION:
-			{
-				this->processRspExecOrderAction(&task);
-				break;
-			}
-
-			case ONRSPFORQUOTEINSERT:
-			{
-				this->processRspForQuoteInsert(&task);
-				break;
-			}
-
-			case ONRSPQUOTEINSERT:
-			{
-				this->processRspQuoteInsert(&task);
-				break;
-			}
-
-			case ONRSPQUOTEACTION:
-			{
-				this->processRspQuoteAction(&task);
-				break;
-			}
-
-			case ONRSPLOCKINSERT:
-			{
-				this->processRspLockInsert(&task);
-				break;
-			}
-
-			case ONRSPBATCHORDERACTION:
-			{
-				this->processRspBatchOrderAction(&task);
-				break;
-			}
-
-			case ONRSPCOMBACTIONINSERT:
-			{
-				this->processRspCombActionInsert(&task);
-				break;
-			}
-
-			case ONRSPQRYORDER:
-			{
-				this->processRspQryOrder(&task);
-				break;
-			}
-
-			case ONRSPQRYTRADE:
-			{
-				this->processRspQryTrade(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTORPOSITION:
-			{
-				this->processRspQryInvestorPosition(&task);
-				break;
-			}
-
-			case ONRSPQRYTRADINGACCOUNT:
-			{
-				this->processRspQryTradingAccount(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTOR:
-			{
-				this->processRspQryInvestor(&task);
-				break;
-			}
-
-			case ONRSPQRYTRADINGCODE:
-			{
-				this->processRspQryTradingCode(&task);
-				break;
-			}
-
-			case ONRSPQRYINSTRUMENTMARGINRATE:
-			{
-				this->processRspQryInstrumentMarginRate(&task);
-				break;
-			}
-
-			case ONRSPQRYINSTRUMENTCOMMISSIONRATE:
-			{
-				this->processRspQryInstrumentCommissionRate(&task);
-				break;
-			}
-
-			case ONRSPQRYEXCHANGE:
-			{
-				this->processRspQryExchange(&task);
-				break;
-			}
-
-			case ONRSPQRYPRODUCT:
-			{
-				this->processRspQryProduct(&task);
-				break;
-			}
-
-			case ONRSPQRYINSTRUMENT:
-			{
-				this->processRspQryInstrument(&task);
-				break;
-			}
-
-			case ONRSPQRYDEPTHMARKETDATA:
-			{
-				this->processRspQryDepthMarketData(&task);
-				break;
-			}
-
-			case ONRSPQRYSETTLEMENTINFO:
-			{
-				this->processRspQrySettlementInfo(&task);
-				break;
-			}
-
-			case ONRSPQRYTRANSFERBANK:
-			{
-				this->processRspQryTransferBank(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTORPOSITIONDETAIL:
-			{
-				this->processRspQryInvestorPositionDetail(&task);
-				break;
-			}
-
-			case ONRSPQRYNOTICE:
-			{
-				this->processRspQryNotice(&task);
-				break;
-			}
-
-			case ONRSPQRYSETTLEMENTINFOCONFIRM:
-			{
-				this->processRspQrySettlementInfoConfirm(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTORPOSITIONCOMBINEDETAIL:
-			{
-				this->processRspQryInvestorPositionCombineDetail(&task);
-				break;
-			}
-
-			case ONRSPQRYCFMMCTRADINGACCOUNTKEY:
-			{
-				this->processRspQryCFMMCTradingAccountKey(&task);
-				break;
-			}
-
-			case ONRSPQRYEWARRANTOFFSET:
-			{
-				this->processRspQryEWarrantOffset(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTORPRODUCTGROUPMARGIN:
-			{
-				this->processRspQryInvestorProductGroupMargin(&task);
-				break;
-			}
-
-			case ONRSPQRYEXCHANGEMARGINRATE:
-			{
-				this->processRspQryExchangeMarginRate(&task);
-				break;
-			}
-
-			case ONRSPQRYEXCHANGEMARGINRATEADJUST:
-			{
-				this->processRspQryExchangeMarginRateAdjust(&task);
-				break;
-			}
-
-			case ONRSPQRYEXCHANGERATE:
-			{
-				this->processRspQryExchangeRate(&task);
-				break;
-			}
-
-			case ONRSPQRYSECAGENTACIDMAP:
-			{
-				this->processRspQrySecAgentACIDMap(&task);
-				break;
-			}
-
-			case ONRSPQRYPRODUCTEXCHRATE:
-			{
-				this->processRspQryProductExchRate(&task);
-				break;
-			}
-
-			case ONRSPQRYPRODUCTGROUP:
-			{
-				this->processRspQryProductGroup(&task);
-				break;
-			}
-
-			case ONRSPQRYMMINSTRUMENTCOMMISSIONRATE:
-			{
-				this->processRspQryMMInstrumentCommissionRate(&task);
-				break;
-			}
-
-			case ONRSPQRYMMOPTIONINSTRCOMMRATE:
-			{
-				this->processRspQryMMOptionInstrCommRate(&task);
-				break;
-			}
-
-			case ONRSPQRYINSTRUMENTORDERCOMMRATE:
-			{
-				this->processRspQryInstrumentOrderCommRate(&task);
-				break;
-			}
-
-			case ONRSPQRYOPTIONINSTRTRADECOST:
-			{
-				this->processRspQryOptionInstrTradeCost(&task);
-				break;
-			}
-
-			case ONRSPQRYOPTIONINSTRCOMMRATE:
-			{
-				this->processRspQryOptionInstrCommRate(&task);
-				break;
-			}
-
-			case ONRSPQRYEXECORDER:
-			{
-				this->processRspQryExecOrder(&task);
-				break;
-			}
-
-			case ONRSPQRYFORQUOTE:
-			{
-				this->processRspQryForQuote(&task);
-				break;
-			}
-
-			case ONRSPQRYQUOTE:
-			{
-				this->processRspQryQuote(&task);
-				break;
-			}
-
-			case ONRSPQRYLOCK:
-			{
-				this->processRspQryLock(&task);
-				break;
-			}
-
-			case ONRSPQRYLOCKPOSITION:
-			{
-				this->processRspQryLockPosition(&task);
-				break;
-			}
-
-			case ONRSPQRYETFOPTIONINSTRCOMMRATE:
-			{
-				this->processRspQryETFOptionInstrCommRate(&task);
-				break;
-			}
-
-			case ONRSPQRYINVESTORLEVEL:
-			{
-				this->processRspQryInvestorLevel(&task);
-				break;
-			}
-
-			case ONRSPQRYEXECFREEZE:
-			{
-				this->processRspQryExecFreeze(&task);
-				break;
-			}
-
-			case ONRSPQRYCOMBINSTRUMENTGUARD:
-			{
-				this->processRspQryCombInstrumentGuard(&task);
-				break;
-			}
-
-			case ONRSPQRYCOMBACTION:
-			{
-				this->processRspQryCombAction(&task);
-				break;
-			}
-
-			case ONRSPQRYTRANSFERSERIAL:
-			{
-				this->processRspQryTransferSerial(&task);
-				break;
-			}
-
-			case ONRSPQRYACCOUNTREGISTER:
-			{
-				this->processRspQryAccountregister(&task);
-				break;
-			}
-
-			case ONRSPERROR:
-			{
-				this->processRspError(&task);
-				break;
-			}
-
-			case ONRTNORDER:
-			{
-				this->processRtnOrder(&task);
-				break;
-			}
-
-			case ONRTNTRADE:
-			{
-				this->processRtnTrade(&task);
-				break;
-			}
-
-			case ONERRRTNORDERINSERT:
-			{
-				this->processErrRtnOrderInsert(&task);
-				break;
-			}
-
-			case ONERRRTNORDERACTION:
-			{
-				this->processErrRtnOrderAction(&task);
-				break;
-			}
-
-			case ONRTNINSTRUMENTSTATUS:
-			{
-				this->processRtnInstrumentStatus(&task);
-				break;
-			}
-
-			case ONRTNBULLETIN:
-			{
-				this->processRtnBulletin(&task);
-				break;
-			}
-
-			case ONRTNTRADINGNOTICE:
-			{
-				this->processRtnTradingNotice(&task);
-				break;
-			}
-
-			case ONRTNERRORCONDITIONALORDER:
-			{
-				this->processRtnErrorConditionalOrder(&task);
-				break;
-			}
-
-			case ONRTNEXECORDER:
-			{
-				this->processRtnExecOrder(&task);
-				break;
-			}
-
-			case ONERRRTNEXECORDERINSERT:
-			{
-				this->processErrRtnExecOrderInsert(&task);
-				break;
-			}
-
-			case ONERRRTNEXECORDERACTION:
-			{
-				this->processErrRtnExecOrderAction(&task);
-				break;
-			}
-
-			case ONERRRTNFORQUOTEINSERT:
-			{
-				this->processErrRtnForQuoteInsert(&task);
-				break;
-			}
-
-			case ONRTNQUOTE:
-			{
-				this->processRtnQuote(&task);
-				break;
-			}
-
-			case ONERRRTNQUOTEINSERT:
-			{
-				this->processErrRtnQuoteInsert(&task);
-				break;
-			}
-
-			case ONERRRTNQUOTEACTION:
-			{
-				this->processErrRtnQuoteAction(&task);
-				break;
-			}
-
-			case ONRTNFORQUOTERSP:
-			{
-				this->processRtnForQuoteRsp(&task);
-				break;
-			}
-
-			case ONRTNCFMMCTRADINGACCOUNTTOKEN:
-			{
-				this->processRtnCFMMCTradingAccountToken(&task);
-				break;
-			}
-
-			case ONRTNLOCK:
-			{
-				this->processRtnLock(&task);
-				break;
-			}
-
-			case ONERRRTNLOCKINSERT:
-			{
-				this->processErrRtnLockInsert(&task);
-				break;
-			}
-
-			case ONERRRTNBATCHORDERACTION:
-			{
-				this->processErrRtnBatchOrderAction(&task);
-				break;
-			}
-
-			case ONRTNCOMBACTION:
-			{
-				this->processRtnCombAction(&task);
-				break;
-			}
-
-			case ONERRRTNCOMBACTIONINSERT:
-			{
-				this->processErrRtnCombActionInsert(&task);
-				break;
-			}
-
-			case ONRSPQRYCONTRACTBANK:
-			{
-				this->processRspQryContractBank(&task);
-				break;
-			}
-
-			case ONRSPQRYPARKEDORDER:
-			{
-				this->processRspQryParkedOrder(&task);
-				break;
-			}
-
-			case ONRSPQRYPARKEDORDERACTION:
-			{
-				this->processRspQryParkedOrderAction(&task);
-				break;
-			}
-
-			case ONRSPQRYTRADINGNOTICE:
-			{
-				this->processRspQryTradingNotice(&task);
-				break;
-			}
-
-			case ONRSPQRYBROKERTRADINGPARAMS:
-			{
-				this->processRspQryBrokerTradingParams(&task);
-				break;
-			}
-
-			case ONRSPQRYBROKERTRADINGALGOS:
-			{
-				this->processRspQryBrokerTradingAlgos(&task);
-				break;
-			}
-
-			case ONRSPQUERYCFMMCTRADINGACCOUNTTOKEN:
-			{
-				this->processRspQueryCFMMCTradingAccountToken(&task);
-				break;
-			}
-
-			case ONRTNFROMBANKTOFUTUREBYBANK:
-			{
-				this->processRtnFromBankToFutureByBank(&task);
-				break;
-			}
-
-			case ONRTNFROMFUTURETOBANKBYBANK:
-			{
-				this->processRtnFromFutureToBankByBank(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMBANKTOFUTUREBYBANK:
-			{
-				this->processRtnRepealFromBankToFutureByBank(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMFUTURETOBANKBYBANK:
-			{
-				this->processRtnRepealFromFutureToBankByBank(&task);
-				break;
-			}
-
-			case ONRTNFROMBANKTOFUTUREBYFUTURE:
-			{
-				this->processRtnFromBankToFutureByFuture(&task);
-				break;
-			}
-
-			case ONRTNFROMFUTURETOBANKBYFUTURE:
-			{
-				this->processRtnFromFutureToBankByFuture(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMBANKTOFUTUREBYFUTUREMANUAL:
-			{
-				this->processRtnRepealFromBankToFutureByFutureManual(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMFUTURETOBANKBYFUTUREMANUAL:
-			{
-				this->processRtnRepealFromFutureToBankByFutureManual(&task);
-				break;
-			}
-
-			case ONRTNQUERYBANKBALANCEBYFUTURE:
-			{
-				this->processRtnQueryBankBalanceByFuture(&task);
-				break;
-			}
-
-			case ONERRRTNBANKTOFUTUREBYFUTURE:
-			{
-				this->processErrRtnBankToFutureByFuture(&task);
-				break;
-			}
-
-			case ONERRRTNFUTURETOBANKBYFUTURE:
-			{
-				this->processErrRtnFutureToBankByFuture(&task);
-				break;
-			}
-
-			case ONERRRTNREPEALBANKTOFUTUREBYFUTUREMANUAL:
-			{
-				this->processErrRtnRepealBankToFutureByFutureManual(&task);
-				break;
-			}
-
-			case ONERRRTNREPEALFUTURETOBANKBYFUTUREMANUAL:
-			{
-				this->processErrRtnRepealFutureToBankByFutureManual(&task);
-				break;
-			}
-
-			case ONERRRTNQUERYBANKBALANCEBYFUTURE:
-			{
-				this->processErrRtnQueryBankBalanceByFuture(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMBANKTOFUTUREBYFUTURE:
-			{
-				this->processRtnRepealFromBankToFutureByFuture(&task);
-				break;
-			}
-
-			case ONRTNREPEALFROMFUTURETOBANKBYFUTURE:
-			{
-				this->processRtnRepealFromFutureToBankByFuture(&task);
-				break;
-			}
-
-			case ONRSPFROMBANKTOFUTUREBYFUTURE:
-			{
-				this->processRspFromBankToFutureByFuture(&task);
-				break;
-			}
-
-			case ONRSPFROMFUTURETOBANKBYFUTURE:
-			{
-				this->processRspFromFutureToBankByFuture(&task);
-				break;
-			}
-
-			case ONRSPQUERYBANKACCOUNTMONEYBYFUTURE:
-			{
-				this->processRspQueryBankAccountMoneyByFuture(&task);
-				break;
-			}
-
-			case ONRTNOPENACCOUNTBYBANK:
-			{
-				this->processRtnOpenAccountByBank(&task);
-				break;
-			}
-
-			case ONRTNCANCELACCOUNTBYBANK:
-			{
-				this->processRtnCancelAccountByBank(&task);
-				break;
-			}
-
-			case ONRTNCHANGEACCOUNTBYBANK:
-			{
-				this->processRtnChangeAccountByBank(&task);
-				break;
-			}
-
-			case ONRTNRESOPENACCCONFIRMTPDBYBANK:
-			{
-				this->processRtnResOpenAccConfirmTpdByBank(&task);
-				break;
-			}
-
-			case ONRSPRESERVEOPENACCOUNTTPDBYFUTURE:
-			{
-				this->processRspReserveOpenAccountTpdByFuture(&task);
-				break;
-			}
-
-			case ONRSPSECURITIESDEPOSITINTERESTBYFUTURE:
-			{
-				this->processRspSecuritiesDepositInterestByFuture(&task);
-				break;
-			}
-
-			case ONRSPDAYENDFILEREADYBYFUTURE:
-			{
-				this->processRspDayEndFileReadyByFuture(&task);
-				break;
-			}
-
-			case ONRSPEXECCOMBINEORDERINSERT:
-			{
-				this->processRspExecCombineOrderInsert(&task);
-				break;
-			}
-
-			case ONRSPEXECCOMBINEORDERACTION:
-			{
-				this->processRspExecCombineOrderAction(&task);
-				break;
-			}
-
-			case ONRSPQRYEXECCOMBINEORDER:
-			{
-				this->processRspQryExecCombineOrder(&task);
-				break;
-			}
-
-			case ONERRRTNEXECCOMBINEORDERACTION:
-			{
-				this->processErrRtnExecCombineOrderAction(&task);
-				break;
-			}
-
-			case ONERRRTNEXECCOMBINEORDERINSERT:
-			{
-				this->processErrRtnExecCombineOrderInsert(&task);
-				break;
-			}
-
-			case ONRTNEXECCOMBINEORDER:
-			{
-				this->processRtnExecCombineOrder(&task);
-				break;
-			}
-			}
-		}
+		CThostFtdcInputInternalTransferField *task_data = (CThostFtdcInputInternalTransferField*)task->task_data;
+		data["InternalTransferRef"] = toUtf(task_data->InternalTransferRef);
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["UserID"] = toUtf(task_data->UserID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["OpPassWord"] = toUtf(task_data->OpPassWord);
+		data["FuBrokerID"] = toUtf(task_data->FuBrokerID);
+		data["FuInvestorID"] = toUtf(task_data->FuInvestorID);
+		data["FuPassWord"] = toUtf(task_data->FuPassWord);
+		data["Amount"] = task_data->Amount;
+		data["CurrencyID"] = toUtf(task_data->CurrencyID);
+		data["Direction"] = task_data->Direction;
+		delete task_data;
 	}
-	catch (const TerminatedError&) {
+	dict error;
+	if (task->task_error)
+	{
+		CThostFtdcRspInfoField *task_error = (CThostFtdcRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
 	}
+	this->onRspInternalTransfer(data, error, task->task_id, task->task_last);
 };
 
-///////////////////////////////////////////////////////////////////////////
-/////////////ä¸»åŠ¨apiå°è£…å‡½æ•°
-///////////////////////////////////////////////////////////////////////////
+void TdApi::processRtnInternalTransfer(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CThostFtdcRtnInternalTransferField *task_data = (CThostFtdcRtnInternalTransferField*)task->task_data;
+		data["FrontID"] = task_data->FrontID;
+		data["SessionID"] = task_data->SessionID;
+		data["InternalTransferRef"] = toUtf(task_data->InternalTransferRef);
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["UserID"] = toUtf(task_data->UserID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["OpPassWord"] = toUtf(task_data->OpPassWord);
+		data["FuBrokerID"] = toUtf(task_data->FuBrokerID);
+		data["FuInvestorID"] = toUtf(task_data->FuInvestorID);
+		data["FuPassWord"] = toUtf(task_data->FuPassWord);
+		data["Amount"] = task_data->Amount;
+		data["CurrencyID"] = toUtf(task_data->CurrencyID);
+		data["Direction"] = task_data->Direction;
+		data["TradingDay"] = toUtf(task_data->TradingDay);
+		data["DepositSeqNo"] = toUtf(task_data->DepositSeqNo);
+		data["TransferReqTime"] = toUtf(task_data->TransferReqTime);
+		data["TransferRspTime"] = toUtf(task_data->TransferRspTime);
+		data["FundServerRedoFlag"] = task_data->FundServerRedoFlag;
+		data["Status"] = task_data->Status;
+		data["StatusMsg"] = toUtf(task_data->StatusMsg);
+		data["FuStatus"] = task_data->FuStatus;
+		data["FuStatusMsg"] = toUtf(task_data->FuStatusMsg);
+		data["InstallID"] = task_data->InstallID;
+		delete task_data;
+	}
+	this->onRtnInternalTransfer(data);
+};
+
+void TdApi::processRspQryInternalTransfer(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CThostFtdcInternalTransferField *task_data = (CThostFtdcInternalTransferField*)task->task_data;
+		data["FrontID"] = task_data->FrontID;
+		data["SessionID"] = task_data->SessionID;
+		data["InternalTransferRef"] = toUtf(task_data->InternalTransferRef);
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["UserID"] = toUtf(task_data->UserID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["OpPassWord"] = toUtf(task_data->OpPassWord);
+		data["FuBrokerID"] = toUtf(task_data->FuBrokerID);
+		data["FuInvestorID"] = toUtf(task_data->FuInvestorID);
+		data["FuPassWord"] = toUtf(task_data->FuPassWord);
+		data["Amount"] = task_data->Amount;
+		data["CurrencyID"] = toUtf(task_data->CurrencyID);
+		data["Direction"] = task_data->Direction;
+		data["TradingDay"] = toUtf(task_data->TradingDay);
+		data["DepositSeqNo"] = toUtf(task_data->DepositSeqNo);
+		data["TransferReqTime"] = toUtf(task_data->TransferReqTime);
+		data["TransferRspTime"] = toUtf(task_data->TransferRspTime);
+		data["FundServerRedoFlag"] = task_data->FundServerRedoFlag;
+		data["Status"] = task_data->Status;
+		data["StatusMsg"] = toUtf(task_data->StatusMsg);
+		data["FuStatus"] = task_data->FuStatus;
+		data["FuStatusMsg"] = toUtf(task_data->FuStatusMsg);
+		data["InstallID"] = task_data->InstallID;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CThostFtdcRspInfoField *task_error = (CThostFtdcRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryInternalTransfer(data, error, task->task_id, task->task_last);
+};
+
+void TdApi::processRspQryFutureTradingAccount(Task *task)
+{
+	gil_scoped_acquire acquire;
+	dict data;
+	if (task->task_data)
+	{
+		CThostFtdcNtfQryFutureTradingAccountField *task_data = (CThostFtdcNtfQryFutureTradingAccountField*)task->task_data;
+		data["FuBrokerID"] = toUtf(task_data->FuBrokerID);
+		data["FuAccountID"] = toUtf(task_data->FuAccountID);
+		data["Deposit"] = task_data->Deposit;
+		data["Withdraw"] = task_data->Withdraw;
+		data["Available"] = task_data->Available;
+		data["WithdrawQuota"] = task_data->WithdrawQuota;
+		data["Reserve"] = task_data->Reserve;
+		data["TradingDay"] = toUtf(task_data->TradingDay);
+		data["SettlementID"] = task_data->SettlementID;
+		data["CurrencyID"] = toUtf(task_data->CurrencyID);
+		data["BrokerID"] = toUtf(task_data->BrokerID);
+		data["UserID"] = toUtf(task_data->UserID);
+		data["InvestorID"] = toUtf(task_data->InvestorID);
+		data["ErrorID"] = task_data->ErrorID;
+		data["ErrorMsg"] = toUtf(task_data->ErrorMsg);
+		data["FrontID"] = task_data->FrontID;
+		data["SessionID"] = task_data->SessionID;
+		data["RequestID"] = task_data->RequestID;
+		delete task_data;
+	}
+	dict error;
+	if (task->task_error)
+	{
+		CThostFtdcRspInfoField *task_error = (CThostFtdcRspInfoField*)task->task_error;
+		error["ErrorID"] = task_error->ErrorID;
+		error["ErrorMsg"] = toUtf(task_error->ErrorMsg);
+		delete task_error;
+	}
+	this->onRspQryFutureTradingAccount(data, error, task->task_id, task->task_last);
+};
+
+
+///-------------------------------------------------------------------------------------
+///Ö÷¶¯º¯Êý
+///-------------------------------------------------------------------------------------
+
 void TdApi::createFtdcTraderApi(string pszFlowPath)
 {
 	this->api = CThostFtdcTraderApi::CreateFtdcTraderApi(pszFlowPath.c_str());
@@ -8723,9 +9195,10 @@ int TdApi::reqUserLogin(const dict &req, int reqid)
 	getString(req, "ProtocolInfo", myreq.ProtocolInfo);
 	getString(req, "MacAddress", myreq.MacAddress);
 	getString(req, "OneTimePassword", myreq.OneTimePassword);
-	getString(req, "ClientIPAddress", myreq.ClientIPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "LoginRemark", myreq.LoginRemark);
 	getInt(req, "ClientIPPort", &myreq.ClientIPPort);
+	getString(req, "ClientIPAddress", myreq.ClientIPAddress);
 	int i = this->api->ReqUserLogin(&myreq, reqid);
 	return i;
 };
@@ -8798,8 +9271,10 @@ int TdApi::reqOrderInsert(const dict &req, int reqid)
 	getString(req, "AccountID", myreq.AccountID);
 	getString(req, "CurrencyID", myreq.CurrencyID);
 	getString(req, "ClientID", myreq.ClientID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "ComTradeID", myreq.ComTradeID);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqOrderInsert(&myreq, reqid);
 	return i;
 };
@@ -8841,8 +9316,12 @@ int TdApi::reqParkedOrderInsert(const dict &req, int reqid)
 	getString(req, "CurrencyID", myreq.CurrencyID);
 	getString(req, "ClientID", myreq.ClientID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "OwnerType", myreq.OwnerType);
+	getString(req, "ComTradeID", myreq.ComTradeID);
+	getString(req, "LoginPBU", myreq.LoginPBU);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqParkedOrderInsert(&myreq, reqid);
 	return i;
 };
@@ -8871,8 +9350,9 @@ int TdApi::reqParkedOrderAction(const dict &req, int reqid)
 	getInt(req, "ErrorID", &myreq.ErrorID);
 	getString(req, "ErrorMsg", myreq.ErrorMsg);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqParkedOrderAction(&myreq, reqid);
 	return i;
 };
@@ -8896,8 +9376,11 @@ int TdApi::reqOrderAction(const dict &req, int reqid)
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "InstrumentID", myreq.InstrumentID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "OwnerType", myreq.OwnerType);
+	getString(req, "LoginPBU", myreq.LoginPBU);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqOrderAction(&myreq, reqid);
 	return i;
 };
@@ -8981,8 +9464,9 @@ int TdApi::reqExecOrderInsert(const dict &req, int reqid)
 	getString(req, "AccountID", myreq.AccountID);
 	getString(req, "CurrencyID", myreq.CurrencyID);
 	getString(req, "ClientID", myreq.ClientID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqExecOrderInsert(&myreq, reqid);
 	return i;
 };
@@ -9004,8 +9488,11 @@ int TdApi::reqExecOrderAction(const dict &req, int reqid)
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "InstrumentID", myreq.InstrumentID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "OwnerType", myreq.OwnerType);
+	getString(req, "LoginPBU", myreq.LoginPBU);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqExecOrderAction(&myreq, reqid);
 	return i;
 };
@@ -9021,8 +9508,11 @@ int TdApi::reqForQuoteInsert(const dict &req, int reqid)
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "ExchangeID", myreq.ExchangeID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "BranchID", myreq.BranchID);
+	getString(req, "LoginPBU", myreq.LoginPBU);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqForQuoteInsert(&myreq, reqid);
 	return i;
 };
@@ -9052,8 +9542,9 @@ int TdApi::reqQuoteInsert(const dict &req, int reqid)
 	getString(req, "ExchangeID", myreq.ExchangeID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
 	getString(req, "ClientID", myreq.ClientID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqQuoteInsert(&myreq, reqid);
 	return i;
 };
@@ -9076,8 +9567,11 @@ int TdApi::reqQuoteAction(const dict &req, int reqid)
 	getString(req, "InstrumentID", myreq.InstrumentID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
 	getString(req, "ClientID", myreq.ClientID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getInt(req, "AskVolume", &myreq.AskVolume);
+	getInt(req, "BidVolume", &myreq.BidVolume);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqQuoteAction(&myreq, reqid);
 	return i;
 };
@@ -9096,8 +9590,9 @@ int TdApi::reqLockInsert(const dict &req, int reqid)
 	getString(req, "BusinessUnit", myreq.BusinessUnit);
 	getChar(req, "LockType", &myreq.LockType);
 	getString(req, "ExchangeID", myreq.ExchangeID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqLockInsert(&myreq, reqid);
 	return i;
 };
@@ -9115,8 +9610,9 @@ int TdApi::reqBatchOrderAction(const dict &req, int reqid)
 	getString(req, "ExchangeID", myreq.ExchangeID);
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqBatchOrderAction(&myreq, reqid);
 	return i;
 };
@@ -9135,9 +9631,11 @@ int TdApi::reqCombActionInsert(const dict &req, int reqid)
 	getChar(req, "CombDirection", &myreq.CombDirection);
 	getChar(req, "HedgeFlag", &myreq.HedgeFlag);
 	getString(req, "ExchangeID", myreq.ExchangeID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
+	getString(req, "ComTradeID", myreq.ComTradeID);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqCombActionInsert(&myreq, reqid);
 	return i;
 };
@@ -9616,6 +10114,18 @@ int TdApi::reqQryETFOptionInstrCommRate(const dict &req, int reqid)
 	return i;
 };
 
+int TdApi::reqQryLimitPosi(const dict &req, int reqid)
+{
+	CThostFtdcQryLimitPosiField myreq = CThostFtdcQryLimitPosiField();
+	memset(&myreq, 0, sizeof(myreq));
+	getString(req, "BrokerID", myreq.BrokerID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "InstrumentID", myreq.InstrumentID);
+	getString(req, "ExchangeID", myreq.ExchangeID);
+	int i = this->api->ReqQryLimitPosi(&myreq, reqid);
+	return i;
+};
+
 int TdApi::reqQryInvestorLevel(const dict &req, int reqid)
 {
 	CThostFtdcQryInvestorLevelField myreq = CThostFtdcQryInvestorLevelField();
@@ -9636,6 +10146,17 @@ int TdApi::reqQryExecFreeze(const dict &req, int reqid)
 	getString(req, "InstrumentID", myreq.InstrumentID);
 	getString(req, "ExchangeID", myreq.ExchangeID);
 	int i = this->api->ReqQryExecFreeze(&myreq, reqid);
+	return i;
+};
+
+int TdApi::reqQryLimitAmount(const dict &req, int reqid)
+{
+	CThostFtdcQryLimitAmountField myreq = CThostFtdcQryLimitAmountField();
+	memset(&myreq, 0, sizeof(myreq));
+	getString(req, "BrokerID", myreq.BrokerID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "ExchangeID", myreq.ExchangeID);
+	int i = this->api->ReqQryLimitAmount(&myreq, reqid);
 	return i;
 };
 
@@ -10071,8 +10592,9 @@ int TdApi::reqExecCombineOrderInsert(const dict &req, int reqid)
 	getString(req, "ExchangeID", myreq.ExchangeID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
 	getString(req, "ClientID", myreq.ClientID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqExecCombineOrderInsert(&myreq, reqid);
 	return i;
 };
@@ -10093,8 +10615,9 @@ int TdApi::reqExecCombineOrderAction(const dict &req, int reqid)
 	getChar(req, "ActionFlag", &myreq.ActionFlag);
 	getString(req, "UserID", myreq.UserID);
 	getString(req, "InvestUnitID", myreq.InvestUnitID);
-	getString(req, "IPAddress", myreq.IPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "MacAddress", myreq.MacAddress);
+	getString(req, "IPAddress", myreq.IPAddress);
 	int i = this->api->ReqExecCombineOrderAction(&myreq, reqid);
 	return i;
 };
@@ -10115,14 +10638,63 @@ int TdApi::reqQryExecCombineOrder(const dict &req, int reqid)
 	return i;
 };
 
+int TdApi::reqInternalTransfer(const dict &req, int reqid)
+{
+	CThostFtdcInputInternalTransferField myreq = CThostFtdcInputInternalTransferField();
+	memset(&myreq, 0, sizeof(myreq));
+	getString(req, "InternalTransferRef", myreq.InternalTransferRef);
+	getString(req, "BrokerID", myreq.BrokerID);
+	getString(req, "UserID", myreq.UserID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "OpPassWord", myreq.OpPassWord);
+	getString(req, "FuBrokerID", myreq.FuBrokerID);
+	getString(req, "FuInvestorID", myreq.FuInvestorID);
+	getString(req, "FuPassWord", myreq.FuPassWord);
+	getDouble(req, "Amount", &myreq.Amount);
+	getString(req, "CurrencyID", myreq.CurrencyID);
+	getChar(req, "Direction", &myreq.Direction);
+	int i = this->api->ReqInternalTransfer(&myreq, reqid);
+	return i;
+};
 
-///////////////////////////////////////////////////////////////////////////
-/////////////pybind11å°è£…
-///////////////////////////////////////////////////////////////////////////
+int TdApi::reqQryInternalTransfer(const dict &req, int reqid)
+{
+	CThostFtdcQryInternalTransferField myreq = CThostFtdcQryInternalTransferField();
+	memset(&myreq, 0, sizeof(myreq));
+	getString(req, "BrokerID", myreq.BrokerID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "InternalTransferRef", myreq.InternalTransferRef);
+	getString(req, "TransferReqTimeStart", myreq.TransferReqTimeStart);
+	getString(req, "TransferReqTimeEnd", myreq.TransferReqTimeEnd);
+	int i = this->api->ReqQryInternalTransfer(&myreq, reqid);
+	return i;
+};
+
+int TdApi::reqQryFutureTradingAccount(const dict &req, int reqid)
+{
+	CThostFtdcQryFutureTradingAccountField myreq = CThostFtdcQryFutureTradingAccountField();
+	memset(&myreq, 0, sizeof(myreq));
+	getString(req, "BrokerID", myreq.BrokerID);
+	getString(req, "InvestorID", myreq.InvestorID);
+	getString(req, "FuBrokerID", myreq.FuBrokerID);
+	getString(req, "FuInvestorID", myreq.FuInvestorID);
+	getString(req, "CurrencyID", myreq.CurrencyID);
+	getInt(req, "InstallID", &myreq.InstallID);
+	getString(req, "UserID", myreq.UserID);
+	int i = this->api->ReqQryFutureTradingAccount(&myreq, reqid);
+	return i;
+};
+
+
+///-------------------------------------------------------------------------------------
+///Pybind11·â×°
+///-------------------------------------------------------------------------------------
+
 class PyTdApi :public TdApi
 {
 public:
 	using TdApi::TdApi;
+
 	void onFrontConnected() override
 	{
 		try
@@ -10867,6 +11439,18 @@ public:
 		}
 	};
 
+	void onRspQryLimitPosi(const dict &data, const dict &error, int reqid, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRspQryLimitPosi, data, error, reqid, last);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
 	void onRspQryInvestorLevel(const dict &data, const dict &error, int reqid, bool last) override
 	{
 		try
@@ -10884,6 +11468,18 @@ public:
 		try
 		{
 			PYBIND11_OVERLOAD(void, TdApi, onRspQryExecFreeze, data, error, reqid, last);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryLimitAmount(const dict &data, const dict &error, int reqid, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRspQryLimitAmount, data, error, reqid, last);
 		}
 		catch (const error_already_set &e)
 		{
@@ -11682,6 +12278,54 @@ public:
 			cout << e.what() << endl;
 		}
 	};
+
+	void onRspInternalTransfer(const dict &data, const dict &error, int reqid, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRspInternalTransfer, data, error, reqid, last);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRtnInternalTransfer(const dict &data) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRtnInternalTransfer, data);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryInternalTransfer(const dict &data, const dict &error, int reqid, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRspQryInternalTransfer, data, error, reqid, last);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
+
+	void onRspQryFutureTradingAccount(const dict &data, const dict &error, int reqid, bool last) override
+	{
+		try
+		{
+			PYBIND11_OVERLOAD(void, TdApi, onRspQryFutureTradingAccount, data, error, reqid, last);
+		}
+		catch (const error_already_set &e)
+		{
+			cout << e.what() << endl;
+		}
+	};
 };
 
 
@@ -11758,8 +12402,10 @@ PYBIND11_MODULE(vnsopttd, m)
 		.def("reqQryLock", &TdApi::reqQryLock)
 		.def("reqQryLockPosition", &TdApi::reqQryLockPosition)
 		.def("reqQryETFOptionInstrCommRate", &TdApi::reqQryETFOptionInstrCommRate)
+		.def("reqQryLimitPosi", &TdApi::reqQryLimitPosi)
 		.def("reqQryInvestorLevel", &TdApi::reqQryInvestorLevel)
 		.def("reqQryExecFreeze", &TdApi::reqQryExecFreeze)
+		.def("reqQryLimitAmount", &TdApi::reqQryLimitAmount)
 		.def("reqQryCombInstrumentGuard", &TdApi::reqQryCombInstrumentGuard)
 		.def("reqQryCombAction", &TdApi::reqQryCombAction)
 		.def("reqQryTransferSerial", &TdApi::reqQryTransferSerial)
@@ -11780,6 +12426,9 @@ PYBIND11_MODULE(vnsopttd, m)
 		.def("reqExecCombineOrderInsert", &TdApi::reqExecCombineOrderInsert)
 		.def("reqExecCombineOrderAction", &TdApi::reqExecCombineOrderAction)
 		.def("reqQryExecCombineOrder", &TdApi::reqQryExecCombineOrder)
+		.def("reqInternalTransfer", &TdApi::reqInternalTransfer)
+		.def("reqQryInternalTransfer", &TdApi::reqQryInternalTransfer)
+		.def("reqQryFutureTradingAccount", &TdApi::reqQryFutureTradingAccount)
 
 		.def("onFrontConnected", &TdApi::onFrontConnected)
 		.def("onFrontDisconnected", &TdApi::onFrontDisconnected)
@@ -11843,8 +12492,10 @@ PYBIND11_MODULE(vnsopttd, m)
 		.def("onRspQryLock", &TdApi::onRspQryLock)
 		.def("onRspQryLockPosition", &TdApi::onRspQryLockPosition)
 		.def("onRspQryETFOptionInstrCommRate", &TdApi::onRspQryETFOptionInstrCommRate)
+		.def("onRspQryLimitPosi", &TdApi::onRspQryLimitPosi)
 		.def("onRspQryInvestorLevel", &TdApi::onRspQryInvestorLevel)
 		.def("onRspQryExecFreeze", &TdApi::onRspQryExecFreeze)
+		.def("onRspQryLimitAmount", &TdApi::onRspQryLimitAmount)
 		.def("onRspQryCombInstrumentGuard", &TdApi::onRspQryCombInstrumentGuard)
 		.def("onRspQryCombAction", &TdApi::onRspQryCombAction)
 		.def("onRspQryTransferSerial", &TdApi::onRspQryTransferSerial)
@@ -11911,5 +12562,9 @@ PYBIND11_MODULE(vnsopttd, m)
 		.def("onErrRtnExecCombineOrderAction", &TdApi::onErrRtnExecCombineOrderAction)
 		.def("onErrRtnExecCombineOrderInsert", &TdApi::onErrRtnExecCombineOrderInsert)
 		.def("onRtnExecCombineOrder", &TdApi::onRtnExecCombineOrder)
+		.def("onRspInternalTransfer", &TdApi::onRspInternalTransfer)
+		.def("onRtnInternalTransfer", &TdApi::onRtnInternalTransfer)
+		.def("onRspQryInternalTransfer", &TdApi::onRspQryInternalTransfer)
+		.def("onRspQryFutureTradingAccount", &TdApi::onRspQryFutureTradingAccount)
 		;
 }
