@@ -1,8 +1,9 @@
-Ôªø#include "vnsoptmd.h"
+#include "vnsoptmd.h"
 
-///////////////////////////////////////////////////////////////////////////
-/////////////ÂéüÁîüÂõûË∞ÉÊé•Âè£ÁîüÊàêtask
-///////////////////////////////////////////////////////////////////////////
+///-------------------------------------------------------------------------------------
+///C++µƒªÿµ˜∫Ø ˝Ω´ ˝æ›±£¥ÊµΩ∂”¡–÷–
+///-------------------------------------------------------------------------------------
+
 void MdApi::OnFrontConnected()
 {
 	Task task = Task();
@@ -26,7 +27,7 @@ void MdApi::OnHeartBeatWarning(int nTimeLapse)
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGIN;
@@ -47,7 +48,7 @@ void MdApi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtd
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUSERLOGOUT;
@@ -68,7 +69,7 @@ void MdApi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRs
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPERROR;
@@ -83,7 +84,7 @@ void MdApi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bI
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBMARKETDATA;
@@ -104,7 +105,7 @@ void MdApi::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstr
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBMARKETDATA;
@@ -125,7 +126,7 @@ void MdApi::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificIns
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPSUBFORQUOTERSP;
@@ -146,7 +147,7 @@ void MdApi::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInst
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void MdApi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	Task task = Task();
 	task.task_name = ONRSPUNSUBFORQUOTERSP;
@@ -167,7 +168,7 @@ void MdApi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificIn
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData)
+void MdApi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) 
 {
 	Task task = Task();
 	task.task_name = ONRTNDEPTHMARKETDATA;
@@ -180,7 +181,7 @@ void MdApi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketDat
 	this->task_queue.push(task);
 };
 
-void MdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
+void MdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) 
 {
 	Task task = Task();
 	task.task_name = ONRTNFORQUOTERSP;
@@ -193,9 +194,98 @@ void MdApi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
 	this->task_queue.push(task);
 };
 
-///////////////////////////////////////////////////////////////////////////
-/////////////process
-///////////////////////////////////////////////////////////////////////////
+///-------------------------------------------------------------------------------------
+///π§◊˜œﬂ≥Ã¥”∂”¡–÷–»°≥ˆ ˝æ›£¨◊™ªØŒ™python∂‘œÛ∫Û£¨Ω¯––Õ∆ÀÕ
+///-------------------------------------------------------------------------------------
+
+void MdApi::processTask()
+{
+	try
+	{
+		while (this->active) {
+			Task task = this->task_queue.pop();
+
+			switch (task.task_name) 
+			{
+			case ONFRONTCONNECTED:
+			{
+				this->processFrontConnected(&task);
+				break;
+			}
+
+			case ONFRONTDISCONNECTED:
+			{
+				this->processFrontDisconnected(&task);
+				break;
+			}
+
+			case ONHEARTBEATWARNING:
+			{
+				this->processHeartBeatWarning(&task);
+				break;
+			}
+
+			case ONRSPUSERLOGIN:
+			{
+				this->processRspUserLogin(&task);
+				break;
+			}
+
+			case ONRSPUSERLOGOUT:
+			{
+				this->processRspUserLogout(&task);
+				break;
+			}
+
+			case ONRSPERROR:
+			{
+				this->processRspError(&task);
+				break;
+			}
+
+			case ONRSPSUBMARKETDATA:
+			{
+				this->processRspSubMarketData(&task);
+				break;
+			}
+
+			case ONRSPUNSUBMARKETDATA:
+			{
+				this->processRspUnSubMarketData(&task);
+				break;
+			}
+
+			case ONRSPSUBFORQUOTERSP:
+			{
+				this->processRspSubForQuoteRsp(&task);
+				break;
+			}
+
+			case ONRSPUNSUBFORQUOTERSP:
+			{
+				this->processRspUnSubForQuoteRsp(&task);
+				break;
+			}
+
+			case ONRTNDEPTHMARKETDATA:
+			{
+				this->processRtnDepthMarketData(&task);
+				break;
+			}
+
+			case ONRTNFORQUOTERSP:
+			{
+				this->processRtnForQuoteRsp(&task);
+				break;
+			}
+			};
+		}
+	}
+	catch (const TerminatedError&)
+	{
+	}
+};
+
 void MdApi::processFrontConnected(Task *task)
 {
 	gil_scoped_acquire acquire;
@@ -418,6 +508,9 @@ void MdApi::processRtnDepthMarketData(Task *task)
 		data["AskVolume5"] = task_data->AskVolume5;
 		data["AveragePrice"] = task_data->AveragePrice;
 		data["ActionDay"] = toUtf(task_data->ActionDay);
+		data["CircuitRefPrice"] = task_data->CircuitRefPrice;
+		data["SendingTime"] = toUtf(task_data->SendingTime);
+		data["BigVolume"] = task_data->BigVolume;
 		delete task_data;
 	}
 	this->onRtnDepthMarketData(data);
@@ -441,96 +534,10 @@ void MdApi::processRtnForQuoteRsp(Task *task)
 	this->onRtnForQuoteRsp(data);
 };
 
-///////////////////////////////////////////////////////////////////////////
-/////////////Â§ÑÁêÜÂàÜÂèë‰ªªÂä°
-///////////////////////////////////////////////////////////////////////////
-void MdApi::processTask()
-{
-	try
-	{
-		while (this->active) {
-			Task task = this->task_queue.pop();
-			switch (task.task_name) {
-			case ONFRONTCONNECTED:
-			{
-				this->processFrontConnected(&task);
-				break;
-			}
+///-------------------------------------------------------------------------------------
+///÷˜∂Ø∫Ø ˝
+///-------------------------------------------------------------------------------------
 
-			case ONFRONTDISCONNECTED:
-			{
-				this->processFrontDisconnected(&task);
-				break;
-			}
-
-			case ONHEARTBEATWARNING:
-			{
-				this->processHeartBeatWarning(&task);
-				break;
-			}
-
-			case ONRSPUSERLOGIN:
-			{
-				this->processRspUserLogin(&task);
-				break;
-			}
-
-			case ONRSPUSERLOGOUT:
-			{
-				this->processRspUserLogout(&task);
-				break;
-			}
-
-			case ONRSPERROR:
-			{
-				this->processRspError(&task);
-				break;
-			}
-
-			case ONRSPSUBMARKETDATA:
-			{
-				this->processRspSubMarketData(&task);
-				break;
-			}
-
-			case ONRSPUNSUBMARKETDATA:
-			{
-				this->processRspUnSubMarketData(&task);
-				break;
-			}
-
-			case ONRSPSUBFORQUOTERSP:
-			{
-				this->processRspSubForQuoteRsp(&task);
-				break;
-			}
-
-			case ONRSPUNSUBFORQUOTERSP:
-			{
-				this->processRspUnSubForQuoteRsp(&task);
-				break;
-			}
-
-			case ONRTNDEPTHMARKETDATA:
-			{
-				this->processRtnDepthMarketData(&task);
-				break;
-			}
-
-			case ONRTNFORQUOTERSP:
-			{
-				this->processRtnForQuoteRsp(&task);
-				break;
-			}
-			}
-		}
-	}
-	catch (const TerminatedError&) {
-	}
-};
-///////////////////////////////////////////////////////////////////////////
-/////////////‰∏ªÂä®apiÂ∞ÅË£ÖÂáΩÊï∞
-///////////////////////////////////////////////////////////////////////////
 void MdApi::createFtdcMdApi(string pszFlowPath)
 {
 	this->api = CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath.c_str());
@@ -624,8 +631,10 @@ int MdApi::reqUserLogin(const dict &req, int reqid)
 	getString(req, "ProtocolInfo", myreq.ProtocolInfo);
 	getString(req, "MacAddress", myreq.MacAddress);
 	getString(req, "OneTimePassword", myreq.OneTimePassword);
-	getString(req, "ClientIPAddress", myreq.ClientIPAddress);
+	getString(req, "reserve1", myreq.reserve1);
 	getString(req, "LoginRemark", myreq.LoginRemark);
+	getInt(req, "ClientIPPort", &myreq.ClientIPPort);
+	getString(req, "ClientIPAddress", myreq.ClientIPAddress);
 	int i = this->api->ReqUserLogin(&myreq, reqid);
 	return i;
 };
@@ -640,13 +649,16 @@ int MdApi::reqUserLogout(const dict &req, int reqid)
 	return i;
 };
 
-///////////////////////////////////////////////////////////////////////////
-/////////////pybind11Â∞ÅË£Ö
-///////////////////////////////////////////////////////////////////////////
+///-------------------------------------------------------------------------------------
+///Pybind11∑‚◊∞
+///-------------------------------------------------------------------------------------
+
+
 class PyMdApi :public MdApi
 {
 public:
 	using MdApi::MdApi;
+
 	void onFrontConnected() override
 	{
 		try

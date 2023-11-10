@@ -2,6 +2,14 @@
 #include "stdafx.h"
 #endif
 
+#include "vnsopt.h"
+#include "pybind11/pybind11.h"
+#include "sopt/ThostFtdcMdApi.h"
+
+
+using namespace pybind11;
+
+//³£Á¿
 #define ONFRONTCONNECTED 0
 #define ONFRONTDISCONNECTED 1
 #define ONHEARTBEATWARNING 2
@@ -15,95 +23,84 @@
 #define ONRTNDEPTHMARKETDATA 10
 #define ONRTNFORQUOTERSP 11
 
-#include "sopt/ThostFtdcMdApi.h"
-#include "pybind11/pybind11.h"
-#include "vnsopt.h"
-using namespace pybind11;
 
+///-------------------------------------------------------------------------------------
+///C++ SPIµÄ»Øµ÷º¯Êý·½·¨ÊµÏÖ
+///-------------------------------------------------------------------------------------
+
+//APIµÄ¼Ì³ÐÊµÏÖ
 class MdApi :public CThostFtdcMdSpi
 {
 private:
 	CThostFtdcMdApi* api;
+	thread task_thread;
 	TaskQueue task_queue;
 	bool active = false;
-	thread task_thread;
+
 public:
-	MdApi() {};
+	MdApi()
+	{
+
+	};
+
 	~MdApi() {
-		if (this->active) {
+		if (this->active)
+		{
 			this->exit();
 		}
 	}
 
-	////////////////////////////////////////////////////////////
-	//////////Ô­ï¿½ï¿½SPIï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
-	////////////////////////////////////////////////////////////
-	///ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ë½»ï¿½×ºï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Â¼Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
+	//-------------------------------------------------------------------------------------
+	//API»Øµ÷º¯Êý
+	//-------------------------------------------------------------------------------------
+
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆðÍ¨ÐÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
 	virtual void OnFrontConnected();
-
+	
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ÐÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØÐÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
+	///@param nReason ´íÎóÔ­Òò
+	///        0x1001 ÍøÂç¶ÁÊ§°Ü
+	///        0x1002 ÍøÂçÐ´Ê§°Ü
+	///        0x2001 ½ÓÊÕÐÄÌø³¬Ê±
+	///        0x2002 ·¢ËÍÐÄÌøÊ§°Ü
+	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
 	virtual void OnFrontDisconnected(int nReason);
-
-	///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½æ¡£ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
-	///@param nTimeLapse ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Î½ï¿½ï¿½Õ±ï¿½ï¿½Äµï¿½Ê±ï¿½ï¿½
+		
+	///ÐÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
 	virtual void OnHeartBeatWarning(int nTimeLapse);
 
-	///ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+	///µÇÂ¼ÇëÇóÏìÓ¦
 	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+	///µÇ³öÇëÇóÏìÓ¦
 	virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+	///´íÎóÓ¦´ð
 	virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+	///¶©ÔÄÐÐÇéÓ¦´ð
 	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+	///È¡Ïû¶©ÔÄÐÐÇéÓ¦´ð
 	virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½ï¿½
+	///¶©ÔÄÑ¯¼ÛÓ¦´ð
 	virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½ï¿½
+	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ð
 	virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª
+	///Éî¶ÈÐÐÇéÍ¨Öª
 	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
-	///Ñ¯ï¿½ï¿½Í¨Öª
+	///Ñ¯¼ÛÍ¨Öª
 	virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp);
 
-	////////////////////////////////////////////////////////////
-	//////////pythonï¿½ï¿½×°ï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
-	////////////////////////////////////////////////////////////
-	virtual void onFrontConnected() {};
+	//-------------------------------------------------------------------------------------
+	//task£ºÈÎÎñ
+	//-------------------------------------------------------------------------------------
 
-	virtual void onFrontDisconnected(int reqid) {};
-
-	virtual void onHeartBeatWarning(int reqid) {};
-
-	virtual void onRspUserLogin(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRspUserLogout(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRspError(const dict &error, int reqid, bool last) {};
-
-	virtual void onRspSubMarketData(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRspUnSubMarketData(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRspSubForQuoteRsp(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRspUnSubForQuoteRsp(const dict &data, const dict &error, int reqid, bool last) {};
-
-	virtual void onRtnDepthMarketData(const dict &data) {};
-
-	virtual void onRtnForQuoteRsp(const dict &data) {};
-
-	//////////////////////////////////////////////////
-	/////process
-	//////////////////////////////////////////////////
 	void processTask();
 
 	void processFrontConnected(Task *task);
@@ -129,9 +126,43 @@ public:
 	void processRtnDepthMarketData(Task *task);
 
 	void processRtnForQuoteRsp(Task *task);
-	//////////////////////////////////////////////////
-	/////apiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//////////////////////////////////////////////////
+
+	//-------------------------------------------------------------------------------------
+	//data£º»Øµ÷º¯ÊýµÄÊý¾Ý×Öµä
+	//error£º»Øµ÷º¯ÊýµÄ´íÎó×Öµä
+	//id£ºÇëÇóid
+	//last£ºÊÇ·ñÎª×îºó·µ»Ø
+	//i£ºÕûÊý
+	//-------------------------------------------------------------------------------------
+
+	virtual void onFrontConnected() {};
+
+	virtual void onFrontDisconnected(int reqid) {};
+
+	virtual void onHeartBeatWarning(int reqid) {};
+
+	virtual void onRspUserLogin(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRspUserLogout(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRspError(const dict &error, int reqid, bool last) {};
+
+	virtual void onRspSubMarketData(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRspUnSubMarketData(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRspSubForQuoteRsp(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRspUnSubForQuoteRsp(const dict &data, const dict &error, int reqid, bool last) {};
+
+	virtual void onRtnDepthMarketData(const dict &data) {};
+
+	virtual void onRtnForQuoteRsp(const dict &data) {};
+
+	//-------------------------------------------------------------------------------------
+	//req:Ö÷¶¯º¯ÊýµÄÇëÇó×Öµä
+	//-------------------------------------------------------------------------------------
+
 	void createFtdcMdApi(string pszFlowPath = "");
 
 	void release();
