@@ -25,6 +25,9 @@ import importlib_metadata
 from .gateway import SoptGateway
 
 
+__all__ = ["SoptGateway"]
+
+
 try:
     __version__ = importlib_metadata.version("vnpy_sopt")
 except importlib_metadata.PackageNotFoundError:
