@@ -29,14 +29,14 @@ compiler_id = cpp.get_id()
 message('构建目标系统: ' + host_machine.system())
 
 # 初始化变量
-thostmduserapi_lib = []
-thosttraderapi_lib = []
+soptthostmduserapi_lib = []
+soptthosttraderapi_lib = []
 extra_cpp_args = []
 extra_link_args = []
 
 # 初始化库变量
-thostmduserapi_lib = []
-thosttraderapi_lib = []
+soptthostmduserapi_lib = []
+soptthosttraderapi_lib = []
 
 # 初始化其他编译选项
 install_rpath_value = ''
@@ -58,10 +58,10 @@ if host_machine.system() == 'windows'
   )
   
   # 定义CTP库
-  thostmduserapi_lib = cpp.find_library('thostmduserapi_se', 
+  soptthostmduserapi_lib = cpp.find_library('soptthostmduserapi_se', 
                                        dirs: [lib_dir, api_dir],
                                        required: true)
-  thosttraderapi_lib = cpp.find_library('thosttraderapi_se', 
+  soptthosttraderapi_lib = cpp.find_library('soptthosttraderapi_se', 
                                        dirs: [lib_dir, api_dir],
                                        required: true)
 
@@ -91,10 +91,10 @@ else  # Linux
   )
   
   # 定义CTP库
-  thostmduserapi_lib = cpp.find_library('thostmduserapi_se', 
+  soptthostmduserapi_lib = cpp.find_library('soptthostmduserapi_se', 
                                        dirs: [lib_dir],
                                        required: true)
-  thosttraderapi_lib = cpp.find_library('thosttraderapi_se', 
+  soptthosttraderapi_lib = cpp.find_library('soptthosttraderapi_se', 
                                        dirs: [lib_dir],
                                        required: true)
 endif
@@ -104,7 +104,7 @@ md_module = py.extension_module(
   'vnsoptmd',
   sources: ['vnpy_sopt/api/vnsopt/vnsoptmd/vnsoptmd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep, thostmduserapi_lib],
+  dependencies: [py_dep, soptthostmduserapi_lib],
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
@@ -116,7 +116,7 @@ td_module = py.extension_module(
   'vnsopttd',
   sources: ['vnpy_sopt/api/vnsopt/vnsopttd/vnsopttd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep, thosttraderapi_lib],
+  dependencies: [py_dep, soptthosttraderapi_lib],
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
@@ -143,8 +143,8 @@ endforeach
 # 安装API动态库文件
 if host_machine.system() == 'windows'
   api_libs = [
-    'vnpy_sopt/api/thostmduserapi_se.dll',
-    'vnpy_sopt/api/thosttraderapi_se.dll',
+    'vnpy_sopt/api/soptthostmduserapi_se.dll',
+    'vnpy_sopt/api/soptthosttraderapi_se.dll',
   ]
   
   install_data(
@@ -153,8 +153,8 @@ if host_machine.system() == 'windows'
   )
 else  # Linux
   api_libs = [
-    'vnpy_sopt/api/libthostmduserapi_se.so',
-    'vnpy_sopt/api/libthosttraderapi_se.so',
+    'vnpy_sopt/api/libsoptthostmduserapi_se.so',
+    'vnpy_sopt/api/libsoptthosttraderapi_se.so',
   ]
   
   install_data(
