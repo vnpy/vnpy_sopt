@@ -1,6 +1,6 @@
 [project]
 name = "vnpy_sopt"
-version = "3.7.0.1"
+version = "3.7.1.0"
 description = "SOPT gateway for vn.py quant trading framework."
 readme = "README.md"
 license = {text = "MIT"}
@@ -20,7 +20,7 @@ classifiers = [
     "Natural Language :: Chinese (Simplified)",
 ]
 requires-python = ">=3.10"
-dependencies = ["vnpy>=4.0.0"]
+dependencies = ["vnpy>=3.0.0"]
 keywords = ["quant", "quantitative", "investment", "trading", "algotrading", "ctp"]
 
 [project.urls]

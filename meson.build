@@ -1,7 +1,7 @@
 project(
   'vnpy_sopt',
   'cpp',
-  version: '3.7.0.1',
+  version: '3.7.1.0',
   license: 'MIT',
   meson_version: '>=1.7.0',
   default_options: [
