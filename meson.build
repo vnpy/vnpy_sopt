@@ -77,7 +77,6 @@ else  # Linux
   
   extra_link_args = [
     '-lstdc++',
-    '-Wl,-rpath,$ORIGIN',  # 添加rpath设置，使库能在运行时找到同目录下的动态库
   ]
   
   # 设置库目录
@@ -104,10 +103,15 @@ md_module = py.extension_module(
   'vnsoptmd',
   sources: ['vnpy_sopt/api/vnsopt/vnsoptmd/vnsoptmd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep, soptthostmduserapi_lib],
+  dependencies: [py_dep],
   cpp_args: extra_cpp_args,
-  link_args: extra_link_args,
+  link_args: extra_link_args + [
+    '-L' + lib_dir,
+    '-lsoptthostmduserapi_se',
+    '-Wl,-rpath,$ORIGIN'
+  ],
   install: true,
+  install_rpath: '$ORIGIN',
   subdir: 'vnpy_sopt/api'
 )
 
@@ -116,10 +120,15 @@ td_module = py.extension_module(
   'vnsopttd',
   sources: ['vnpy_sopt/api/vnsopt/vnsopttd/vnsopttd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep, soptthosttraderapi_lib],
+  dependencies: [py_dep],
   cpp_args: extra_cpp_args,
-  link_args: extra_link_args,
+  link_args: extra_link_args + [
+    '-L' + lib_dir,
+    '-lsoptthosttraderapi_se',
+    '-Wl,-rpath,$ORIGIN'
+  ],
   install: true,
+  install_rpath: '$ORIGIN',
   subdir: 'vnpy_sopt/api'
 )
 
