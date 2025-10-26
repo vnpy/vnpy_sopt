@@ -1,6 +1,6 @@
 [project]
 name = "vnpy_sopt"
-version = "3.7.1.1"
+version = "3.7.1.2"
 description = "SOPT gateway for vn.py quant trading framework."
 readme = "README.md"
 license = {text = "MIT"}
