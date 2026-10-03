@@ -1,3 +1,5 @@
+"""实现期权 CTP 交易接口。"""
+
 from pathlib import Path
 from datetime import datetime
 from time import sleep
@@ -244,7 +246,7 @@ class SoptGateway(BaseGateway):
 
 
 class SoptMdApi(MdApi):
-    """"""
+    """对接期权 CTP 柜台的行情接口。"""
 
     def __init__(self, gateway: SoptGateway) -> None:
         """构造函数"""
@@ -399,7 +401,7 @@ class SoptMdApi(MdApi):
 
 
 class SoptTdApi(TdApi):
-    """"""
+    """对接期权 CTP 柜台的交易接口。"""
 
     def __init__(self, gateway: SoptGateway) -> None:
         """构造函数"""
