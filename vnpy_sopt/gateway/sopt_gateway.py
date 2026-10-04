@@ -3,6 +3,7 @@
 from pathlib import Path
 from datetime import datetime
 from time import sleep
+from typing import cast
 
 from vnpy.event import EventEngine, Event
 from vnpy.trader.constant import (
@@ -155,7 +156,7 @@ class SoptGateway(BaseGateway):
 
     default_name: str = "SOPT"
 
-    default_setting: dict[str, str] = {
+    default_setting: dict[str, str | int | float | bool] = {
         "用户名": "",
         "密码": "",
         "经纪商代码": "",
@@ -165,7 +166,7 @@ class SoptGateway(BaseGateway):
         "授权编码": ""
     }
 
-    exchanges: list[str] = list(EXCHANGE_SOPT2VT.values())
+    exchanges: list[Exchange] = list(EXCHANGE_SOPT2VT.values())
 
     def __init__(self, event_engine: EventEngine, gateway_name: str) -> None:
         """构造函数"""
@@ -304,7 +305,7 @@ class SoptMdApi(MdApi):
             return
 
         symbol: str = data["InstrumentID"]
-        contract: ContractData = symbol_contract_map.get(symbol, None)
+        contract: ContractData | None = symbol_contract_map.get(symbol, None)
         if not contract:
             return
 
@@ -334,8 +335,9 @@ class SoptMdApi(MdApi):
             gateway_name=self.gateway_name
         )
 
+        contract_extra: dict[str, bool] = cast(dict[str, bool], contract.extra)
         tick.extra = {
-            "trading_active": contract.extra["trading_active"],
+            "trading_active": contract_extra["trading_active"],
             "market_closed": data["ClosePrice"] > 0
         }
 
@@ -524,12 +526,12 @@ class SoptTdApi(TdApi):
 
         # 必须已经收到了合约信息后才能处理
         symbol: str = data["InstrumentID"]
-        contract: ContractData = symbol_contract_map.get(symbol, None)
+        contract: ContractData | None = symbol_contract_map.get(symbol, None)
 
         if contract:
             # 获取之前缓存的持仓数据缓存
             key: str = f"{data['InstrumentID'], data['PosiDirection']}"
-            position: PositionData = self.positions.get(key, None)
+            position: PositionData | None = self.positions.get(key, None)
 
             if "&" in symbol:
                 exchange: Exchange = Exchange.SSE
@@ -549,7 +551,7 @@ class SoptTdApi(TdApi):
             position.yd_volume = data["Position"] - data["TodayPosition"]
 
             # 获取合约的乘数信息
-            size: int = contract.size
+            size: float = contract.size
 
             # 计算之前已有仓位的持仓总成本
             cost: float = position.price * position.volume * size
@@ -592,7 +594,7 @@ class SoptTdApi(TdApi):
 
     def onRspQryInstrument(self, data: dict, error: dict, reqid: int, last: bool) -> None:
         """合约查询回报"""
-        product: Product = PRODUCT_SOPT2VT.get(data["ProductClass"], None)
+        product: Product | None = PRODUCT_SOPT2VT.get(data["ProductClass"], None)
         if product:
             contract: ContractData = ContractData(
                 symbol=data["InstrumentID"],
@@ -705,12 +707,13 @@ class SoptTdApi(TdApi):
     def onRtnInstrumentStatus(self, data: dict) -> None:
         """合约交易状态推送"""
         symbol: str = data["InstrumentID"]
-        contract: ContractData = symbol_contract_map.get(symbol, None)
+        contract: ContractData | None = symbol_contract_map.get(symbol, None)
         if not contract:
             return
 
         trading_active: bool = ACTIVE_SOPT2VT.get(data["InstrumentStatus"], False)
-        contract.extra["trading_active"] = trading_active
+        contract_extra: dict[str, bool] = cast(dict[str, bool], contract.extra)
+        contract_extra["trading_active"] = trading_active
 
     def connect(
         self,
@@ -815,7 +818,7 @@ class SoptTdApi(TdApi):
         order: OrderData = req.create_order_data(orderid, self.gateway_name)
         self.gateway.on_order(order)
 
-        return order.vt_orderid     # type: ignore
+        return order.vt_orderid
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
