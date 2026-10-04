@@ -160,6 +160,11 @@ if host_machine.system() == 'windows'
     api_libs,
     install_dir: py.get_install_dir() / 'vnpy_sopt/api'
   )
+  # 可编辑安装的扩展在构建目录，厂商库仍在源码树。
+  # 拷到构建目录后供本地导入。这些拷贝不安装。
+  foreach lib : api_libs
+    fs.copyfile(lib)
+  endforeach
 else  # Linux
   api_libs = [
     'vnpy_sopt/api/libsoptthostmduserapi_se.so',
@@ -170,4 +175,9 @@ else  # Linux
     api_libs,
     install_dir: py.get_install_dir() / 'vnpy_sopt/api'
   )
+  # 可编辑安装的扩展在构建目录，厂商库仍在源码树。
+  # 拷到构建目录后供本地导入。这些拷贝不安装。
+  foreach lib : api_libs
+    fs.copyfile(lib)
+  endforeach
 endif
