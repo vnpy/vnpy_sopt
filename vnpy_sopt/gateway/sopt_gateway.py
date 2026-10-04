@@ -1,5 +1,6 @@
 """实现期权 CTP 交易接口。"""
 
+from collections.abc import Callable
 from pathlib import Path
 from datetime import datetime
 from time import sleep
@@ -143,7 +144,7 @@ ACTIVE_SOPT2VT: dict[str, bool] = {
 }
 
 # 其他常量
-CHINA_TZ = ZoneInfo("Asia/Shanghai")       # 中国时区
+CHINA_TZ: ZoneInfo = ZoneInfo("Asia/Shanghai")       # 中国时区
 
 # 合约数据全局缓存字典
 symbol_contract_map: dict[str, ContractData] = {}
@@ -236,7 +237,7 @@ class SoptGateway(BaseGateway):
             return
         self.count = 0
 
-        func = self.query_functions.pop(0)
+        func: Callable[[], None] = self.query_functions.pop(0)
         func()
         self.query_functions.append(func)
 
@@ -282,6 +283,7 @@ class SoptMdApi(MdApi):
             self.login_status = True
             self.gateway.write_log("行情服务器登录成功")
 
+            symbol: str
             for symbol in self.subscribed:
                 self.subscribeMarketData(symbol)
         else:
@@ -785,6 +787,9 @@ class SoptTdApi(TdApi):
         self.order_ref += 1
 
         tp: tuple = ORDERTYPE_VT2SOPT[req.type]
+        price_type: str
+        time_condition: str
+        volume_condition: str
         price_type, time_condition, volume_condition = tp
 
         sopt_req: dict = {
@@ -822,6 +827,9 @@ class SoptTdApi(TdApi):
 
     def cancel_order(self, req: CancelRequest) -> None:
         """委托撤单"""
+        frontid: str
+        sessionid: str
+        order_ref: str
         frontid, sessionid, order_ref = req.orderid.split("_")
 
         sopt_req: dict = {
